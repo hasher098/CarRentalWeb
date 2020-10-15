@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import mainPage from "./components/mainPage/MainPage";
 
 import * as serviceWorker from "./serviceWorker";
+import MainPage from "./components/mainPage/MainPage";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App></App>
+    <MainPage/>
   </React.StrictMode>,
   document.getElementById("root")
 );
