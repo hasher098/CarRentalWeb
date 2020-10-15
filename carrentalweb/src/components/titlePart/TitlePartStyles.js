@@ -25,9 +25,9 @@ const useStyles=makeStyles((theme)=>({
         marginTop: `40px`,
     },
     searchbtn:{
-        backgroundColor:`#811A0B`,
+        backgroundColor:`white`,
         width:`550px`,
-        height:`80px`,
+        height:`55px`,
         marginLeft:`40px`,
     },
     searchcar:{

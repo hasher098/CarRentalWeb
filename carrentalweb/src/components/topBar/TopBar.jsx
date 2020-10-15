@@ -6,8 +6,10 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import EmailIcon from '@material-ui/icons/Email';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+
 const TopBar = () => {
   const classes = useStyles();
+
   return (
     <AppBar position="relative">
       <Toolbar className={classes.toolbar}>
