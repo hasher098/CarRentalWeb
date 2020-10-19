@@ -8,11 +8,16 @@ const useStyles=makeStyles((theme)=>({
     },
     features:{
         height:"100%",
-        width:"40%",
+        width:"50%",
         float:"left",
+        paddingLeft:"140px",
+    },
+    fimg:{
+        maxwidth:"100%",
+        height:"auto",
     },
     car:{
-        width:"60%",
+        width:"50%",
         height:"100%",
         float:"left",
     },
