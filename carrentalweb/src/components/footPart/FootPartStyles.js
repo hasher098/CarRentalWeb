@@ -7,11 +7,21 @@ const useStyles=makeStyles((theme)=>({
         color:'#f2f2f2',
     },
     info:{
-        width:"400px",
+        width:"90%",
         height:"100%",
         paddingLeft:"100px",
         paddingTop:"60px",
-    }
+    },
+    socials:{
+        width:"10%",
+        height:"100%",
+        
+    },
+    icons:{
+        fontSize:"100px",
+        
+        
+    },
 
 }));
 
