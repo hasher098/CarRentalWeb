@@ -4,7 +4,8 @@ import Image from "../../autko.jpg";
 const useStyles=makeStyles((theme)=>({
     background:{
         backgroundImage:`url(${Image})`,
-        height: `1000px`,
+        height: `70rem`,
+        width:'100%',
         opacity:`0.95`,
         backgroundRepeat: "no-repeat",
 			backgroundPosition: "center center",
@@ -13,20 +14,18 @@ const useStyles=makeStyles((theme)=>({
     bar:{
         backgroundColor:`black`,
         opacity:`0.5`,
-        height:`630px`,
+        height:`40rem`,
         width:`100%`,
         marginTop:`7em`,
     },
     bgform:{
         backgroundColor:`blue`,
-        height:`400px`,
-        width:`550px`,
+        height:`15rem`,
         marginLeft: `40px`,
         marginTop: `40px`,
     },
     searchbtn:{
         backgroundColor:`white`,
-        width:`550px`,
         height:`55px`,
         marginLeft:`40px`,
     },
@@ -40,8 +39,6 @@ const useStyles=makeStyles((theme)=>({
         color:"white",
         fontSize:"64px",
         textAlign:"right",
-        marginLeft:"350px",
-        marginTop:"40px",
     },
     textbox:{
         color:"white",

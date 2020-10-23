@@ -17,27 +17,25 @@ const TitlePart = () => {
 
   return (
     <Grid container className={classes.background}>
-      <Grid item className={classes.bar}>
-        <Grid container className={classes.textbox}>
-          <Typography className={classes.title}>
-            Wypożyczalnia samochodów
-            <br />w Częstochowie. <br /> Z nami dojedziesz tam,
-            <br /> gdzie chcesz.
-          </Typography>
+      <Grid container className={classes.bar}>
+        <Grid item xs={12} md={6}>
+          <Grid item className={classes.bgform}></Grid>
+          <Grid item className={classes.searchbtn}>
+            <Autocomplete
+              id="combo-box-demo"
+              options={data}
+              getOptionLabel={(option) => option.brand}
+              style={{ backgroundColor: `white` }}
+              renderInput={(params) => (
+                <TextField {...params} label="Wybierz samochód" variant="outlined" />
+              )}
+            ></Autocomplete>
+          </Grid>
         </Grid>
-        <Grid item className={classes.bgform}></Grid>
-        <Grid item className={classes.searchbtn}>
-          {/* <Typography variant="h4" className={classes.searchcar}> */}
-          <Autocomplete
-            id="combo-box-demo"
-            options={data}
-            getOptionLabel={(option) => option.brand}
-            style={{ width: 550, backgroundColor: `white` }}
-            renderInput={(params) => (
-              <TextField {...params} label="Wybierz samochód" variant="outlined" />
-            )}
-          ></Autocomplete>
-          {/* </Typography> */}
+        <Grid item className={classes.bar} xs={12} md={6}>
+          <Typography className={classes.title}>
+            Wypożyczalnia samochodów w Częstochowie. Z nami dojedziesz tam, gdzie chcesz.
+          </Typography>
         </Grid>
       </Grid>
     </Grid>
