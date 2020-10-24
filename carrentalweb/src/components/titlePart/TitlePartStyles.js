@@ -4,7 +4,8 @@ import Image from "../../autko.jpg";
 const useStyles=makeStyles((theme)=>({
     background:{
         backgroundImage:`url(${Image})`,
-        height: `1000px`,
+        height: `70rem`,
+        width:'100%',
         opacity:`0.95`,
         backgroundRepeat: "no-repeat",
 			backgroundPosition: "center center",
@@ -13,22 +14,20 @@ const useStyles=makeStyles((theme)=>({
     bar:{
         backgroundColor:`black`,
         opacity:`0.5`,
-        height:`630px`,
-        width:`100%`,
-        marginTop:`7em`,
+        height:`40rem`,
+        marginTop:`7rem`
     },
     bgform:{
-        backgroundColor:`blue`,
-        height:`400px`,
-        width:`550px`,
-        marginLeft: `40px`,
-        marginTop: `40px`,
+        backgroundColor:`#990033`,
+        height:`25rem`,
+        marginTop: `3rem`,
+        width:`80%`,
+        padding:`1rem`
     },
     searchbtn:{
         backgroundColor:`white`,
-        width:`550px`,
-        height:`55px`,
-        marginLeft:`40px`,
+        height:`3rem`,
+        width:`80%`
     },
     searchcar:{
         color:`yellow`,
@@ -40,8 +39,6 @@ const useStyles=makeStyles((theme)=>({
         color:"white",
         fontSize:"64px",
         textAlign:"right",
-        marginLeft:"350px",
-        marginTop:"40px",
     },
     textbox:{
         color:"white",
@@ -50,6 +47,15 @@ const useStyles=makeStyles((theme)=>({
         marginLeft:"595px",
         position:"absolute",
     },
+    firstPart:{
+        
+    },
+    secondPart:{
+
+    },
+    searchBox:{
+        marginLeft:`3rem`
+    }
 
 
 }));

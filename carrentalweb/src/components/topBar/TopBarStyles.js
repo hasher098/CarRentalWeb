@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme)=>({
     menuIcon:{
         marginLeft:theme.spacing(1),
     },
+    mailTypho:{
+      marginRight:'20px'
+    }
 }));
 
 export default useStyles;
