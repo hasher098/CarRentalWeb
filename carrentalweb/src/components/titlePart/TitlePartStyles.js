@@ -15,19 +15,19 @@ const useStyles=makeStyles((theme)=>({
         backgroundColor:`black`,
         opacity:`0.5`,
         height:`40rem`,
-        width:`100%`,
-        marginTop:`7em`,
+        marginTop:`7rem`
     },
     bgform:{
-        backgroundColor:`blue`,
-        height:`15rem`,
-        marginLeft: `40px`,
-        marginTop: `40px`,
+        backgroundColor:`#990033`,
+        height:`25rem`,
+        marginTop: `3rem`,
+        width:`80%`,
+        padding:`1rem`
     },
     searchbtn:{
         backgroundColor:`white`,
-        height:`55px`,
-        marginLeft:`40px`,
+        height:`3rem`,
+        width:`80%`
     },
     searchcar:{
         color:`yellow`,
@@ -47,6 +47,15 @@ const useStyles=makeStyles((theme)=>({
         marginLeft:"595px",
         position:"absolute",
     },
+    firstPart:{
+        
+    },
+    secondPart:{
+
+    },
+    searchBox:{
+        marginLeft:`3rem`
+    }
 
 
 }));
