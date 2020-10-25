@@ -9,14 +9,12 @@ const DescPart = () => {
 
   return (
       <Grid container className={classes.background}>
-        <DescBox tytul="O nas" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
-        <DescBox tytul="Dlaczego my?" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
-        <DescBox tytul="Nasze Pojazdy" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
-        <DescBox tytul="Pakiety Premium" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
-        <DescBox tytul="Siedziba" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
-        <DescBox tytul="Ceny" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
-        <DescBox tytul="Regulamin" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
-        <DescBox tytul="Opinie" descript="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget rutrum metus. Duis blandit lorem ac est fringilla, nec congue nibh hendrerit. Pellentesque arcu tellus, ornare sollicitudin commodo vel, convallis ut ex."></DescBox>
+        <DescBox tytul="O nas" descript="NazwaNaszejWypożyczalni to wypożyczalnia, która umożliwia szybki i sprawny wynajem samochodu na terenie powiatu częstochowskiego. Konfigurator internetowy pozwala na wypożyczenie samochodu odpowiedniego dla naszych potrzeb. "></DescBox>
+        <DescBox tytul="Dlaczego my?" descript="Jesteśmy firmą z wieloletnim stażem wynajmu pojazdów. Nasi klienci zawsze są zadowoleni ze świadczonych przez nas usług. Dlatego zdecydowaliśmy się na rozpoczęcie wynajmu pojazdów przez internet."></DescBox>
+        <DescBox tytul="Nasze Pojazdy" descript="Dysponujemy samochodami osobowymi, SUV-ami oraz busami i dostawczakami. Do dyspozycji klientów są samochody z automatyczną i manualną skrzynią biegów. Samochody są w pełni sprawne, co gwarantuje bezpieczeństwo."></DescBox>
+        <DescBox tytul="Pakiety Premium" descript="W naszej wypożyczalni istnieje również możliwość dokupienia pakietu premium do wypożyczanego samochodu. Pakiet obejmuje dodatki takie jak: XXXX YYYYY ZZZZZ QQQQ WWWWWW"></DescBox>
+        <DescBox tytul="Siedziba" descript="Parking na którym przetrzymujemy nasze pojazdy znajduje się na ulicy XXX32 i to właśnie tam mogą Państwo je obejrzeć. Jeśli chodzi o biuro, to jest ono ulokowane w budynku XYZ przy ulicy XYZ32"></DescBox>
+        <DescBox tytul="Ceny" descript=" Ceny najmu naszych pojazdów są zawsze dostosowane do sytuacji panującej obecnie w gospodarce. Dzięki temu, każdy ma możliwość wypożyczyć samcohód, który nie obciąży jego domowego budżetu."></DescBox>
       </Grid>
     
 );

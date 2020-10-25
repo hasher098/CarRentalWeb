@@ -7,11 +7,13 @@ const Title = ({ tytul }) => {
   const classes = useStyles();
 
   return (
-    <Grid container className={classes.t1}>
+    <Typography className={classes.t1}>
       {tytul}
-      <br />
+      <br/>
       <img src={Line} alt="Line" />
-    </Grid>
+    </Typography>
+    
+    
   );
 };
 

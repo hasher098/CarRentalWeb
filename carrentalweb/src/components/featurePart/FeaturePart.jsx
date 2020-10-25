@@ -8,16 +8,16 @@ const FeaturePart = () => {
   const classes = useStyles();
   return (
     <Grid container className={classes.background}>
-      <Grid container className={classes.features}>
-        <img className={classes.fimg} src={Features} alt="Features" />
+      <Grid container className={classes.features}lg={6} sm={12} xs={12}>
+        <Grid item sm={6}>
+          <img className={classes.fimg} src={Features} alt="Features" />
+        </Grid>
       </Grid>
-      <Grid container className={classes.car}>
-        <Grid item className={classes.imagecar}>
+      <Grid container className={classes.car}lg={6} sm={12} xs={12}>
+        <Grid item className={classes.imagecar} lg={12}>
           <img src={Car} alt="Car" />
         </Grid>
       </Grid>
- 
-      
     </Grid>
   );
 };
