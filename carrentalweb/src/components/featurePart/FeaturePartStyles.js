@@ -3,7 +3,7 @@ import {makeStyles} from "@material-ui/core/styles";
 const useStyles=makeStyles((theme)=>({
     background:{
         backgroundColor:"#F2F2F2",
-        height: `1000px`,
+        height: "auto",
         opacity:`0.95`,
     },
     features:{
@@ -13,8 +13,7 @@ const useStyles=makeStyles((theme)=>({
         paddingLeft:"140px",
     },
     fimg:{
-        maxwidth:"100%",
-        height:"auto",
+       
     },
     car:{
         width:"50%",

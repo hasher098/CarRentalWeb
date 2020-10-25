@@ -8,10 +8,11 @@ const DescBox = ({tytul,descript}) => {
   const classes = useStyles();
 
   return (
-      <Grid container className={classes.d1}>
+      <Grid container className={classes.d1} md={6} lg={4} sm={12}>
+        <Grid item>
           <Title tytul={tytul}></Title>
           <Description descript={descript}></Description>
-
+        </Grid>
       </Grid>
   );
 };
