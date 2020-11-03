@@ -17,6 +17,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import RegisterWindow from '../registerWindow/RegisterWindow';
+import LoginWindow from '../loginWindow/LoginWindows'
+
 const StyledMenu = withStyles({
   paper: {
     width: '240px',
@@ -62,6 +64,7 @@ const SideBar = () => {
   };
 
   const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
 
   const handleClickOpenDialog = () => {
     setOpen(true);
@@ -71,6 +74,16 @@ const SideBar = () => {
   const handleCloseDialog = () => {
     setOpen(false);
   };
+
+  const handleClickOpenDialog1 = () => {
+    setOpen(true);
+    handleClose();
+  };
+
+  const handleCloseDialog1 = () => {
+    setOpen(false);
+  };
+
 
   return (
     <>
@@ -107,7 +120,21 @@ const SideBar = () => {
             <DialogActions></DialogActions>
           </Dialog>
         </StyledMenuItem>
-        <StyledMenuItem className={classes.menuItem}>Logowanie</StyledMenuItem>
+        <StyledMenuItem className={classes.menuItem}>
+          <Button onClick={handleClickOpenDialog1}>Logowanie</Button>
+          <Dialog 
+             open={open1}
+             onClose={handleClose}
+             aria-labelledby="alert-dialog-title"
+             aria-describedby="alert-dialog-description"
+          >
+            <DialogContent>
+              <LoginWindow></LoginWindow>
+            </DialogContent>
+            <DialogActions></DialogActions>
+          </Dialog>
+          
+        </StyledMenuItem>
         <StyledMenuItem className={classes.menuItem}>O nas</StyledMenuItem>
         <StyledMenuItem className={classes.menuItem}>Kontakt</StyledMenuItem>
         <StyledMenuItem className={classes.menuItem}>Regulamin</StyledMenuItem>
