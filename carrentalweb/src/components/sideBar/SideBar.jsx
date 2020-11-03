@@ -10,7 +10,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
-
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import RegisterWindow from '../registerWindow/RegisterWindow';
 const StyledMenu = withStyles({
   paper: {
     width: '240px',
@@ -55,6 +61,17 @@ const SideBar = () => {
     setAnchorEl(null);
   };
 
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpenDialog = () => {
+    setOpen(true);
+    handleClose();
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <IconButton
@@ -74,9 +91,22 @@ const SideBar = () => {
         anchorEl={anchorEl}
         keepMounted
         open={Boolean(anchorEl)}
-        onClose={handleClose}
+        onClose={handleCloseDialog}
       >
-        <StyledMenuItem className={classes.menuItem}>Zarejestruj się</StyledMenuItem>
+        <StyledMenuItem className={classes.menuItem}>
+          <Button onClick={handleClickOpenDialog}>Zarejestruj się</Button>
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogContent>
+              <RegisterWindow></RegisterWindow>
+            </DialogContent>
+            <DialogActions></DialogActions>
+          </Dialog>
+        </StyledMenuItem>
         <StyledMenuItem className={classes.menuItem}>Logowanie</StyledMenuItem>
         <StyledMenuItem className={classes.menuItem}>O nas</StyledMenuItem>
         <StyledMenuItem className={classes.menuItem}>Kontakt</StyledMenuItem>
