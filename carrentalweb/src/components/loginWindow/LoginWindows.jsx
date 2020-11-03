@@ -16,6 +16,7 @@ import useStyles from './LoginWindowStyles';
 import Container from '@material-ui/core/Container';
 import { loginRequest } from '../../api/loginClient';
 import { FormControl } from '@material-ui/core';
+import RegisterWindow from '../registerWindow/RegisterWindow';
 const LoginWindow = () => {
   const classes = useStyles();
 
@@ -37,6 +38,10 @@ const LoginWindow = () => {
     <FormControl onSubmit={handleSubmit(loginUser)}>
       <Grid>
         <Container component="main" maxWidth="xs">
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography variant="h5" className={classes.text}>SignIn</Typography>
           <form role="form" noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
@@ -46,7 +51,7 @@ const LoginWindow = () => {
                  fullWidth
                  id="userName"
                  defaultValue=""
-                 label={'userName'}
+                 label={'Username'}
                  name="userName"
                  autoComplete="userName"
                  autoFocus
@@ -61,7 +66,7 @@ const LoginWindow = () => {
                   defaultValue=""
                   inputRef={register}
                   name="password"
-                  label={'password'}
+                  label={'Password'}
                   type="password"
                   id="password"
                 />
@@ -74,12 +79,12 @@ const LoginWindow = () => {
               color="primary"
               className={classes.submit}
             >
-              Sign Up
+              Sign In
             </Button>
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                    Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>

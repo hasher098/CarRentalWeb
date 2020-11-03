@@ -76,12 +76,12 @@ const SideBar = () => {
   };
 
   const handleClickOpenDialog1 = () => {
-    setOpen(true);
+    setOpen1(true);
     handleClose();
   };
 
   const handleCloseDialog1 = () => {
-    setOpen(false);
+    setOpen1(false);
   };
 
 
