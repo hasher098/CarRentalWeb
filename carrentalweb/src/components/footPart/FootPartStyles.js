@@ -14,7 +14,9 @@ const useStyles=makeStyles((theme)=>({
         padding:"20px",
         
     },
-
+    text:{
+        textAlign:"center",
+    }
 }));
 
 export default useStyles;
