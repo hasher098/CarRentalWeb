@@ -16,6 +16,7 @@ import LoginWindow from '../loginWindow/LoginWindows'
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import Typography from '@material-ui/core/Typography';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const SideBar = () => {
   const classes = useStyles();
@@ -76,7 +77,7 @@ const SideBar = () => {
         <Button onClick={handleClickOpenDialog}>Zarejestruj się</Button>
           <Dialog
             open={open}
-            onClose={handleClose}
+            onClose={handleCloseDialog}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
@@ -91,7 +92,7 @@ const SideBar = () => {
           <Button onClick={handleClickOpenDialog1}>Logowanie</Button>
           <Dialog
             open={open1}
-            onClose={handleClose}
+            onClose={handleCloseDialog1}
           >
             <DialogContent>
               <LoginWindow></LoginWindow>
@@ -108,13 +109,12 @@ const SideBar = () => {
     <div>
        {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Button onClick={toggleDrawer(anchor, true)} className={classes.menu}><MenuIcon></MenuIcon><Typography variant="h6" > MENU</Typography></Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
-        </React.Fragment>
+          </React.Fragment>
       ))}
-
     </div>
   );
 }
