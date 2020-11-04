@@ -8,8 +8,9 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
     },
     avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
+      marginLeft:"auto",
+      marginRight:"auto",
+      backgroundColor: "#811A0B",
     },
     form: {
       width: '100%', // Fix IE 11 issue.
@@ -17,7 +18,11 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
       margin: theme.spacing(3, 0, 2),
+      backgroundColor:"#811A0B",
     },
+    text:{
+        textAlign:"center",
+    }
   }));
 
   export default useStyles;

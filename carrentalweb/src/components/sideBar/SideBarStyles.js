@@ -22,6 +22,12 @@ const useStyles = makeStyles({
           wordSpacing:'0.6px',
           fontWeight:'700'
       },
+      list: {
+        width: 250,
+      },
+      fullList: {
+        width: 'auto',
+      },
   });
 
   export default useStyles;
