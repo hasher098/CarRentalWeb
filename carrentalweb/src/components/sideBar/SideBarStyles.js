@@ -1,6 +1,6 @@
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 const drawerWidth=240;
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme)=>({
     root: {
         display: 'flex',
       },
@@ -9,6 +9,9 @@ const useStyles = makeStyles({
       },
       hide: {
         display: 'none',
+      },
+      menu:{
+        color:"white",
       },
       drawer: {
         width: drawerWidth,
@@ -28,6 +31,6 @@ const useStyles = makeStyles({
       fullList: {
         width: 'auto',
       },
-  });
+  }));
 
   export default useStyles;
