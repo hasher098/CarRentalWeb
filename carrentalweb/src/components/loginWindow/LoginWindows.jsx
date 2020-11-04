@@ -16,46 +16,48 @@ import useStyles from './LoginWindowStyles';
 import Container from '@material-ui/core/Container';
 import { loginRequest } from '../../api/loginClient';
 import { FormControl } from '@material-ui/core';
-import RegisterWindow from '../registerWindow/RegisterWindow';
-const LoginWindow = () => {
+import Loader from '../loader/Loader';
+const LoginWindow = (props) => {
   const classes = useStyles();
-
+  const [isLoading, setIsLoading] = useState(false);
   const { register, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
 
   async function loginUser(data) {
     try {
+      setIsLoading(true);
       const response = await loginRequest(data.userName, data.password);
-      console.log(data);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+
+      props.parrentCallback(false);
+      setIsLoading(false);
+    } catch (error) {}
   }
 
   return (
     <FormControl onSubmit={handleSubmit(loginUser)}>
       <Grid>
         <Container component="main" maxWidth="xs">
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography variant="h5" className={classes.text}>SignIn</Typography>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography variant="h5" className={classes.text}>
+            SignIn
+          </Typography>
           <form role="form" noValidate>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
-                 variant="outlined"
-                 margin="normal"
-                 fullWidth
-                 id="userName"
-                 defaultValue=""
-                 label={'Username'}
-                 name="userName"
-                 autoComplete="userName"
-                 autoFocus
-                 inputRef={register}
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  id="userName"
+                  defaultValue=""
+                  label={'Username'}
+                  name="userName"
+                  autoComplete="userName"
+                  autoFocus
+                  inputRef={register}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -72,19 +74,20 @@ const LoginWindow = () => {
                 />
               </Grid>
             </Grid>
-            <Button
+            <Loader
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              isLoading={isLoading}
             >
               Sign In
-            </Button>
+            </Loader>
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="#" variant="body2">
-                    Don't have an account? Sign Up
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>

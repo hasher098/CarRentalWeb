@@ -12,7 +12,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import RegisterWindow from '../registerWindow/RegisterWindow';
-import LoginWindow from '../loginWindow/LoginWindows'
+import LoginWindow from '../loginWindow/LoginWindows';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import Typography from '@material-ui/core/Typography';
@@ -22,39 +22,49 @@ const SideBar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-      };
-      const handleClose = () => {
-            setAnchorEl(null);
-          };
-        
-          const [open, setOpen] = React.useState(false);
-          const [open1, setOpen1] = React.useState(false);
-        
-          const handleClickOpenDialog = () => {
-            setOpen(true);
-            handleClose();
-          };
-        
-          const handleCloseDialog = () => {
-            setOpen(false);
-          };
-        
-          const handleClickOpenDialog1 = () => {
-            setOpen1(true);
-            handleClose();
-          };
-        
-          const handleCloseDialog1 = () => {
-            setOpen1(false);
-          };
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
+
+  const handleClickOpenDialog = () => {
+    setOpen(true);
+    handleClose();
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+  };
+
+  const handleClickOpenDialog1 = () => {
+    setOpen1(true);
+    handleClose();
+  };
+
+  const handleCloseDialog1 = () => {
+    setOpen1(false);
+  };
+
+  const closeRegister = (something) => {
+    setOpen(something);
+  };
+  const closeLogin = (something) => {
+    setOpen1(something);
+  };
 
   const [state, setState] = React.useState({
     right: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift' || event.Key === 'Esc')) {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift' || event.Key === 'Esc')
+    ) {
       return;
     }
 
@@ -71,10 +81,9 @@ const SideBar = () => {
       onKeyDown={toggleDrawer(anchor, true)}
     >
       <List>
-      
         <ListItem className={classes.MenuItem}>
-        <VpnKeyIcon></VpnKeyIcon>
-        <Button onClick={handleClickOpenDialog}>Zarejestruj się</Button>
+          <VpnKeyIcon></VpnKeyIcon>
+          <Button onClick={handleClickOpenDialog}>Zarejestruj się</Button>
           <Dialog
             open={open}
             onClose={handleCloseDialog}
@@ -82,20 +91,17 @@ const SideBar = () => {
             aria-describedby="alert-dialog-description"
           >
             <DialogContent>
-              <RegisterWindow></RegisterWindow>
+              <RegisterWindow parrentCallback={closeRegister}></RegisterWindow>
             </DialogContent>
             <DialogActions></DialogActions>
           </Dialog>
         </ListItem>
         <ListItem className={classes.menuItem}>
-        <LockOpenIcon></LockOpenIcon>
+          <LockOpenIcon></LockOpenIcon>
           <Button onClick={handleClickOpenDialog1}>Logowanie</Button>
-          <Dialog
-            open={open1}
-            onClose={handleCloseDialog1}
-          >
+          <Dialog open={open1} onClose={handleCloseDialog1}>
             <DialogContent>
-              <LoginWindow></LoginWindow>
+              <LoginWindow parrentCallback={closeLogin}></LoginWindow>
             </DialogContent>
             <DialogActions></DialogActions>
           </Dialog>
@@ -107,16 +113,19 @@ const SideBar = () => {
 
   return (
     <div>
-       {['right'].map((anchor) => (
+      {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)} className={classes.menu}><MenuIcon></MenuIcon><Typography variant="h6" > MENU</Typography></Button>
+          <Button onClick={toggleDrawer(anchor, true)} className={classes.menu}>
+            <MenuIcon></MenuIcon>
+            <Typography variant="h6"> MENU</Typography>
+          </Button>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}
           </Drawer>
-          </React.Fragment>
+        </React.Fragment>
       ))}
     </div>
   );
-}
+};
 
 export default SideBar;

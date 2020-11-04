@@ -16,18 +16,21 @@ import useStyles from './RegisterWindowStyles';
 import Container from '@material-ui/core/Container';
 import { registerRequest } from '../../api/registerClient';
 import { FormControl } from '@material-ui/core';
-const RegisterWindow = () => {
+import Loader from '../loader/Loader';
+import { IsoOutlined } from '@material-ui/icons';
+const RegisterWindow = (props) => {
   const classes = useStyles();
-
+  const [isLoading, setIsLoading] = useState(false);
   const { register, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
-
   async function registerUser(data) {
     try {
+      setIsLoading(true);
       const response = await registerRequest(data.userName, data.email, data.password);
-      console.log(data);
-      console.log(response);
+
+      props.parrentCallback(false);
+      setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -81,15 +84,16 @@ const RegisterWindow = () => {
                 />
               </Grid>
             </Grid>
-            <Button
+            <Loader
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              isLoading={isLoading}
             >
               Sign Up
-            </Button>
+            </Loader>
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="#" variant="body2">
