@@ -40,18 +40,24 @@ const RegisterWindow = (props) => {
     <FormControl onSubmit={handleSubmit(registerUser)}>
       <Grid>
         <Container component="main" maxWidth="xs">
+        <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography variant="h5" className={classes.text}>
+          Sign up
+          </Typography>
           <form role="form" noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   variant="outlined"
                   margin="normal"
                   fullWidth
-                  id="userName"
+                  id="email"
                   defaultValue=""
-                  label={'userName'}
-                  name="userName"
-                  autoComplete="userName"
+                  label={'Email'}
+                  name="email"
+                  autoComplete="email"
                   autoFocus
                   inputRef={register}
                 />
@@ -61,11 +67,11 @@ const RegisterWindow = (props) => {
                   variant="outlined"
                   margin="normal"
                   fullWidth
-                  id="email"
+                  id="userName"
                   defaultValue=""
-                  label={'email'}
-                  name="email"
-                  autoComplete="email"
+                  label={'Username'}
+                  name="userName"
+                  autoComplete="userName"
                   autoFocus
                   inputRef={register}
                 />
@@ -78,7 +84,7 @@ const RegisterWindow = (props) => {
                   defaultValue=""
                   inputRef={register}
                   name="password"
-                  label={'password'}
+                  label={'Password'}
                   type="password"
                   id="password"
                 />

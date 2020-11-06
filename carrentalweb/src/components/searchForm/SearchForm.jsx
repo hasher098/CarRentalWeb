@@ -53,7 +53,7 @@ const SearchForm = () => {
         <Autocomplete
           id="combo-box-demo"
           options={data}
-          getOptionLabel={(option) => option.brand}
+          getOptionLabel={(option) => option.brand + " " + option.model + " Pojemność: " + option.engineCapacity  }
           style={{ backgroundColor: `white` }}
           renderInput={(params) => (
             <TextField {...params} label="Wybierz samochód" variant="outlined" />

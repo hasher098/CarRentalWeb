@@ -11,7 +11,7 @@ const TitlePart = () => {
   return (
     <Grid container className={classes.background}>
       <Grid container className={classes.bar}>
-        <Grid item xs={12} md={6} className={classes.firstPart}>
+        <Grid container className={classes.form} md={6} xs={12}>
           <Grid item className={classes.searchBox}>
             <Grid item className={classes.bgform}>
               <SearchForm></SearchForm>
@@ -23,10 +23,12 @@ const TitlePart = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item className={classes.secondBar} xs={12} md={6}>
-          <Typography className={classes.title}>
+        <Grid container className={classes.titlebox} md={6} xs={12}>
+          <Grid item>
+            <Typography className={classes.title}>
             Wypożyczalnia samochodów w Częstochowie. Z nami dojedziesz tam, gdzie chcesz.
-          </Typography>
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
