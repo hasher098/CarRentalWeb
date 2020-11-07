@@ -12,56 +12,40 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import useStyles from './RegisterWindowStyles';
+import useStyles from './LoginWindowStyles';
 import Container from '@material-ui/core/Container';
-import { registerRequest } from '../../api/registerClient';
+import { loginRequest } from '../../api/loginClient';
 import { FormControl } from '@material-ui/core';
 import Loader from '../loader/Loader';
-import { IsoOutlined } from '@material-ui/icons';
-const RegisterWindow = (props) => {
+const LoginWindow = (props) => {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
   const { register, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
-  async function registerUser(data) {
+
+  async function loginUser(data) {
     try {
       setIsLoading(true);
-      const response = await registerRequest(data.userName, data.email, data.password);
+      const response = await loginRequest(data.userName, data.password);
 
       props.parrentCallback(false);
       setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 
   return (
-    <FormControl onSubmit={handleSubmit(registerUser)}>
+    <FormControl onSubmit={handleSubmit(loginUser)}>
       <Grid>
         <Container component="main" maxWidth="xs">
-        <Avatar className={classes.avatar}>
+          <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant="h5" className={classes.text}>
-          Sign up
+            SignIn
           </Typography>
           <form role="form" noValidate>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  id="email"
-                  defaultValue=""
-                  label={'Email'}
-                  name="email"
-                  autoComplete="email"
-                  autoFocus
-                  inputRef={register}
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   variant="outlined"
@@ -98,12 +82,12 @@ const RegisterWindow = (props) => {
               className={classes.submit}
               isLoading={isLoading}
             >
-              Sign Up
+              Sign In
             </Loader>
             <Grid container justify="flex-end">
               <Grid item>
                 <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                  Don't have an account? Sign Up
                 </Link>
               </Grid>
             </Grid>
@@ -113,4 +97,4 @@ const RegisterWindow = (props) => {
     </FormControl>
   );
 };
-export default RegisterWindow;
+export default LoginWindow;

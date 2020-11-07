@@ -7,23 +7,22 @@ const useStyles=makeStyles((theme)=>({
         opacity:`0.95`,
     },
     features:{
-        height:"100%",
-        width:"50%",
-        float:"left",
-        paddingLeft:"140px",
+        backgroundColor:"#ececec",
     },
     fimg:{
-       
+        maxWidth:"100%",
+        height:"auto",
+        
     },
     car:{
-        width:"50%",
-        height:"100%",
-        float:"left",
+        marginRight:"auto",
+        marginLeft:"auto",
     },
-    imagecar:{
-        marginTop:"25%",
-        marginLeft:"25%"
+    cimg:{
+        maxWidth:"100%",
+        height:"auto",
     },
+   
 
 }));
 

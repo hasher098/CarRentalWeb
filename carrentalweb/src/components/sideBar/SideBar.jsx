@@ -1,67 +1,35 @@
 import React from 'react';
-import useStyles from './SideBarStyles';
-import MenuIcon from '@material-ui/icons/Menu';
-import Menu from '@material-ui/core/Menu';
-import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import { withStyles } from '@material-ui/core/styles';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
+import clsx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import useStyles from './SideBarStyles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import RegisterWindow from '../registerWindow/RegisterWindow';
-const StyledMenu = withStyles({
-  paper: {
-    width: '240px',
-    backgroundColor: 'lightgray',
-  },
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'center',
-    }}
-    {...props}
-  />
-));
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    '&:focus': {
-      backgroundColor: 'white',
-      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-        color: 'gray',
-      },
-    },
-  },
-}))(MenuItem);
+import LoginWindow from '../loginWindow/LoginWindows';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import Typography from '@material-ui/core/Typography';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const SideBar = () => {
   const classes = useStyles();
-
   const [anchorEl, setAnchorEl] = React.useState(null);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
 
   const handleClickOpenDialog = () => {
     setOpen(true);
@@ -72,47 +40,92 @@ const SideBar = () => {
     setOpen(false);
   };
 
-  return (
-    <>
-      <IconButton
-        edge="start"
-        className={classes.menuButton}
-        color="inherit"
-        aria-label="open drawer"
-        onClick={handleClick}
-        className={classes.menuIcon}
-      >
-        MENU
-        <MenuIcon />
-      </IconButton>
+  const handleClickOpenDialog1 = () => {
+    setOpen1(true);
+    handleClose();
+  };
 
-      <StyledMenu
-        id="customized-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleCloseDialog}
-      >
-        <StyledMenuItem className={classes.menuItem}>
+  const handleCloseDialog1 = () => {
+    setOpen1(false);
+  };
+
+  const closeRegister = (something) => {
+    setOpen(something);
+  };
+  const closeLogin = (something) => {
+    setOpen1(something);
+  };
+
+  const [state, setState] = React.useState({
+    right: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift' || event.Key === 'Esc')
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <div
+      className={clsx(classes.list, {
+        [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+      })}
+      role="presentation"
+      onClick={toggleDrawer(anchor, true)}
+      onKeyDown={toggleDrawer(anchor, true)}
+    >
+      <List>
+        <ListItem className={classes.MenuItem}>
+          <VpnKeyIcon></VpnKeyIcon>
           <Button onClick={handleClickOpenDialog}>Zarejestruj się</Button>
           <Dialog
             open={open}
-            onClose={handleClose}
+            onClose={handleCloseDialog}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
           >
             <DialogContent>
-              <RegisterWindow></RegisterWindow>
+              <RegisterWindow parrentCallback={closeRegister}></RegisterWindow>
             </DialogContent>
             <DialogActions></DialogActions>
           </Dialog>
-        </StyledMenuItem>
-        <StyledMenuItem className={classes.menuItem}>Logowanie</StyledMenuItem>
-        <StyledMenuItem className={classes.menuItem}>O nas</StyledMenuItem>
-        <StyledMenuItem className={classes.menuItem}>Kontakt</StyledMenuItem>
-        <StyledMenuItem className={classes.menuItem}>Regulamin</StyledMenuItem>
-      </StyledMenu>
-    </>
+        </ListItem>
+        <ListItem className={classes.menuItem}>
+          <LockOpenIcon></LockOpenIcon>
+          <Button onClick={handleClickOpenDialog1}>Logowanie</Button>
+          <Dialog open={open1} onClose={handleCloseDialog1}>
+            <DialogContent>
+              <LoginWindow parrentCallback={closeLogin}></LoginWindow>
+            </DialogContent>
+            <DialogActions></DialogActions>
+          </Dialog>
+        </ListItem>
+      </List>
+      <Divider />
+    </div>
+  );
+
+  return (
+    <div>
+      {['right'].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <Button onClick={toggleDrawer(anchor, true)} className={classes.menu}>
+            <MenuIcon></MenuIcon>
+            <Typography variant="h6"> MENU</Typography>
+          </Button>
+          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+    </div>
   );
 };
+
 export default SideBar;

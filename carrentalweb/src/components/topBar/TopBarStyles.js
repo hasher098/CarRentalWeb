@@ -16,14 +16,18 @@ const useStyles = makeStyles((theme)=>({
         marginRight: theme.spacing(1),
         
       },
-      mailIcon: {
-        marginRight: theme.spacing(1),
-      },
     menuIcon:{
         marginLeft:theme.spacing(1),
     },
     mailTypho:{
       marginRight:'20px'
+    },
+    mailIcon: {
+      marginRight: theme.spacing(1),
+      marginTop: theme.spacing(0),
+    },
+    but:{
+        color:"White",
     }
 }));
 

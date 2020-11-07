@@ -1,0 +1,19 @@
+<Grid item xs={12} md={6} className={classes.firstPart}>
+          <Grid item className={classes.searchBox}>
+            <Grid item className={classes.bgform}>
+              <SearchForm></SearchForm>
+            </Grid>
+            <Grid item className={classes.searchbtn}>
+              <Button variant="contained" color="primary" className={classes.margin}>
+                Wyszukaj samochód
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid container className={classes.secondBar} md={6} xs={12}>
+        <Grid item className={classes.secondBar} md={6} xs={12}>
+          <Typography className={classes.title}>
+            Wypożyczalnia samochodów w Częstochowie. Z nami dojedziesz tam, gdzie chcesz.
+          </Typography>
+        </Grid>
+        </Grid>
