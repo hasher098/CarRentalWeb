@@ -17,21 +17,27 @@ import Container from '@material-ui/core/Container';
 import { loginRequest } from '../../api/loginClient';
 import { FormControl } from '@material-ui/core';
 import Loader from '../loader/Loader';
+import { loginAction } from '../../store/actions/loginActions';
+import { useDispatch } from 'react-redux';
 const LoginWindow = (props) => {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
   const { register, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
-
+  const dispatch = useDispatch();
   async function loginUser(data) {
     try {
       setIsLoading(true);
-      const response = await loginRequest(data.userName, data.password);
-
+      if (await dispatch(loginAction(data.userName, data.password))) {
+      } else {
+        console.log('error');
+      }
       props.parrentCallback(false);
       setIsLoading(false);
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
