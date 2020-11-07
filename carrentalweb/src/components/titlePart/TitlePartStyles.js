@@ -12,8 +12,7 @@ const useStyles=makeStyles((theme)=>({
 			backgroundSize: "cover"
     },
     bar:{
-        backgroundColor:`black`,
-        opacity:`0.5`,
+        backgroundColor: `rgba(0,0,0,0.5)`,
         height:"auto",
         marginTop:`7rem`,
         marginBottom:"7rem",
@@ -43,7 +42,7 @@ const useStyles=makeStyles((theme)=>({
     
     },
     bgform:{
-        backgroundColor:`#990033`,
+        backgroundColor:`#811A0B`,
         margin:"auto",
         padding:`1rem`
     },

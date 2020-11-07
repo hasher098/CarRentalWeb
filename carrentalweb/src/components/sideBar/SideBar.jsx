@@ -17,10 +17,16 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import { useSelector } from 'react-redux';
+import { authUserSelector } from '../../store/selectors/authSelector';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { useDispatch } from 'react-redux';
+import { logoutAction } from '../../store/actions/logoutActions';
 const SideBar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const dispatch = useDispatch();
+  const isAuth = useSelector(authUserSelector);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -71,6 +77,10 @@ const SideBar = () => {
     setState({ ...state, [anchor]: open });
   };
 
+  const logout = () => {
+    dispatch(logoutAction());
+  };
+
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -80,33 +90,43 @@ const SideBar = () => {
       onClick={toggleDrawer(anchor, true)}
       onKeyDown={toggleDrawer(anchor, true)}
     >
-      <List>
-        <ListItem className={classes.MenuItem}>
-          <VpnKeyIcon></VpnKeyIcon>
-          <Button onClick={handleClickOpenDialog}>Zarejestruj się</Button>
-          <Dialog
-            open={open}
-            onClose={handleCloseDialog}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogContent>
-              <RegisterWindow parrentCallback={closeRegister}></RegisterWindow>
-            </DialogContent>
-            <DialogActions></DialogActions>
-          </Dialog>
-        </ListItem>
-        <ListItem className={classes.menuItem}>
-          <LockOpenIcon></LockOpenIcon>
-          <Button onClick={handleClickOpenDialog1}>Logowanie</Button>
-          <Dialog open={open1} onClose={handleCloseDialog1}>
-            <DialogContent>
-              <LoginWindow parrentCallback={closeLogin}></LoginWindow>
-            </DialogContent>
-            <DialogActions></DialogActions>
-          </Dialog>
-        </ListItem>
-      </List>
+      {!isAuth && (
+        <List>
+          <ListItem className={classes.MenuItem}>
+            <VpnKeyIcon></VpnKeyIcon>
+            <Button onClick={handleClickOpenDialog}>Zarejestruj się</Button>
+            <Dialog
+              open={open}
+              onClose={handleCloseDialog}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogContent>
+                <RegisterWindow parrentCallback={closeRegister}></RegisterWindow>
+              </DialogContent>
+              <DialogActions></DialogActions>
+            </Dialog>
+          </ListItem>
+          <ListItem className={classes.menuItem}>
+            <LockOpenIcon></LockOpenIcon>
+            <Button onClick={handleClickOpenDialog1}>Logowanie</Button>
+            <Dialog open={open1} onClose={handleCloseDialog1}>
+              <DialogContent>
+                <LoginWindow parrentCallback={closeLogin}></LoginWindow>
+              </DialogContent>
+              <DialogActions></DialogActions>
+            </Dialog>
+          </ListItem>
+        </List>
+      )}
+      {isAuth && (
+        <List>
+          <ListItem className={classes.MenuItem}>
+            <ExitToAppIcon></ExitToAppIcon>
+            <Button onClick={logout}>Wyloguj się</Button>
+          </ListItem>
+        </List>
+      )}
       <Divider />
     </div>
   );
