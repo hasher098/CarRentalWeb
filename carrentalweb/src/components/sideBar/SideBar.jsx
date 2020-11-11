@@ -21,7 +21,9 @@ import { useSelector } from 'react-redux';
 import { authUserSelector } from '../../store/selectors/authSelector';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useDispatch } from 'react-redux';
+import descPart from '../descPart/DescPart';
 import { logoutAction } from '../../store/actions/logoutActions';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const SideBar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -123,11 +125,31 @@ const SideBar = () => {
         <List>
           <ListItem className={classes.MenuItem}>
             <ExitToAppIcon></ExitToAppIcon>
-            <Button onClick={logout}>Wyloguj się</Button>
+            <Link to="/">
+              <Button onClick={logout}>Wyloguj się</Button>
+            </Link>
+          </ListItem>
+          <Divider />
+          <ListItem className={classes.MenuItem}>
+            <ExitToAppIcon></ExitToAppIcon>
+            <Link to="/">
+              <Button>Strona główna</Button>
+            </Link>
+          </ListItem>
+          <ListItem className={classes.MenuItem}>
+            <ExitToAppIcon></ExitToAppIcon>
+            <Link to="/additionalInfo">
+              <Button>Odnosnik</Button>
+            </Link>
+          </ListItem>
+          <ListItem className={classes.MenuItem}>
+            <ExitToAppIcon></ExitToAppIcon>
+            <Link to="/profile">
+              <Button>Formularz</Button>
+            </Link>
           </ListItem>
         </List>
       )}
-      <Divider />
     </div>
   );
 

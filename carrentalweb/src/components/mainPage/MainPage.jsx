@@ -6,15 +6,37 @@ import TitlePart from '../titlePart/TitlePart';
 import FeaturePart from '../featurePart/FeaturePart';
 import DescPart from '../descPart/DescPart.jsx';
 import FootPart from '../footPart/FootPart.jsx';
+import ListOfCars from '../afterLoginComponents/listOfCars/ListOfCars';
+import Content from './Content';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { authUserSelector } from '../../store/selectors/authSelector';
+import { useSelector } from 'react-redux';
+import PrivateRoute from '../helpers/privateRoute/PrivateRoute';
+import ProfilePage from '../afterLoginComponents/profilePage/ProfilePage';
 const MainPage = () => {
+  const isAuth = useSelector(authUserSelector);
+  console.log(isAuth);
   return (
-    <React.Fragment>
-      <TopBar></TopBar>
-      <TitlePart></TitlePart>
-      <FeaturePart></FeaturePart>
-      <DescPart></DescPart>
-      <FootPart></FootPart>
-    </React.Fragment>
+    <Router>
+      {!isAuth ? (
+        <>
+          <TopBar></TopBar>
+          <Switch>
+            <Route path="/" exact component={Content} />
+            <PrivateRoute path="/additionalInfo" component={DescPart} />
+          </Switch>
+        </>
+      ) : (
+        <>
+          <TopBar></TopBar>
+          <Switch>
+            <PrivateRoute path="/" exact component={ListOfCars} />
+            <PrivateRoute path="/additionalInfo" component={DescPart} />
+            <PrivateRoute path="/profile" component={ProfilePage} />
+          </Switch>
+        </>
+      )}
+    </Router>
   );
 };
 
