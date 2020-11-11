@@ -10,6 +10,8 @@ const SearchForm = () => {
   async function fetchData() {
     const response = await listOfCarsRequest();
     setData(response.data);
+    console.log('TU');
+    console.log(data);
   }
   useEffect(() => {
     fetchData();
@@ -53,7 +55,9 @@ const SearchForm = () => {
         <Autocomplete
           id="combo-box-demo"
           options={data}
-          getOptionLabel={(option) => option.brand + " " + option.model + " Pojemność: " + option.engineCapacity  }
+          getOptionLabel={(option) =>
+            option.brand + ' ' + option.model + ' Pojemność: ' + option.engineCapacity
+          }
           style={{ backgroundColor: `white` }}
           renderInput={(params) => (
             <TextField {...params} label="Wybierz samochód" variant="outlined" />

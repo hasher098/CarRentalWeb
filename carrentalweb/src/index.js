@@ -13,7 +13,7 @@ ReactDOM.render(
   <ReduxProvider store={store}>
     <PersistGate loading={null} persistor={persistor}>
   <React.StrictMode>
-    <MainPage/>
+  <MainPage/>
   </React.StrictMode>
   </PersistGate>
   </ReduxProvider>,

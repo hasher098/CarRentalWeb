@@ -21,6 +21,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useSelector } from 'react-redux';
 import { userNameSelector } from '../../store/selectors/authSelector';
+
 const TopBar = () => {
   const isName = useSelector(userNameSelector);
   const classes = useStyles();
