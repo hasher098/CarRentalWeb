@@ -6,6 +6,12 @@ const useStyles = makeStyles({
     container: {
       maxHeight: 440,
     },
+    carContainer:{
+      marginTop:'1rem',
+    },
+    card:{
+      marginTop:`1rem`
+    }
   });
 
   export default useStyles;
