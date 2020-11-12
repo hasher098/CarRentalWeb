@@ -11,7 +11,11 @@ import TextField from '@material-ui/core/TextField';
 import TableRow from '@material-ui/core/TableRow';
 import { listOfCarsRequest } from '../../../api/carClient';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import CarItem from './carItem/CarItem';
+import Box from '@material-ui/core/Box';
+import Pagination from '@material-ui/lab/Pagination';
 const columns = [
   { id: 'brand', label: 'Brand', minWidth: 120 },
   { id: 'model', label: 'Model', minWidth: 100 },
@@ -54,92 +58,46 @@ const columns = [
 const ListOfCars = () => {
   const classes = useStyles();
   const [cars, setCars] = useState([]);
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentCars, setCurrentCars] = useState([]);
 
   async function fetchCars() {
     const response = await listOfCarsRequest();
-
-    const rows = response.data.map((x) => {
-      const score = createData(
-        x.brand,
-        x.model,
-        x.year,
-        x.color,
-        x.engineCapacity,
-        x.seats,
-        x.gearbox,
-      );
-      return score;
-    });
+    const rows = response.data;
     setCars(rows);
+    setCurrentCars(rows.slice(currentPage * 6 - 6, currentPage * 6));
   }
 
   useEffect(() => {
     fetchCars();
   }, []);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
+  useEffect(() => {
+    setCurrentCars(cars.slice(currentPage * 6 - 6, currentPage * 6));
+  }, [currentPage]);
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+  const handleChangePage = (e, pageIndex) => {
+    setCurrentPage(pageIndex);
   };
-
-  function createData(brand, model, year, color, engineCapacity, seats, gearbox) {
-    return { brand, model, year, color, engineCapacity, seats, gearbox };
-  }
-  function wyswietl() {
-    console.log(cars);
-  }
 
   return (
-    <Paper className={classes.root}>
-      <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
-          <TableHead>
-            <TableRow>
-              {columns.map((column) => (
-                <TableCell
-                  key={column.id}
-                  align={column.align}
-                  style={{ minWidth: column.minWidth }}
-                >
-                  {column.label}
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {cars.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
-              return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                  {columns.map((column) => {
-                    const value = row[column.id];
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component="div"
-        count={cars.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
-      />
-    </Paper>
+    <>
+      <Grid container className={classes.carContainer} justify="center">
+        {currentCars.map((data, index) => (
+          <Grid item xs={4} key={index}>
+            <Box display="flex" justifyContent="space-around" className={classes.card}>
+              <CarItem dane={data}></CarItem>
+            </Box>
+          </Grid>
+        ))}
+        <Pagination
+          onChange={handleChangePage}
+          count={Math.ceil(cars.length / 6)}
+          style={{ marginTop: '1rem' }}
+          color={'secondary'}
+        />
+      </Grid>
+    </>
   );
 };
 
