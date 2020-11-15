@@ -19,49 +19,58 @@ const CarItem = (props) => {
   const data = props.dane;
   return (
     console.log(data),
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia className={classes.media} image={props.dane.image} title="Contemplative Reptile" />
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="h2">
-            {props.dane.brand} {props.dane.model}
-          </Typography>
-          <Grid item className={classes.cardata}>
-            <Typography className={classes.carinfo}>
-            <OpacityIcon></OpacityIcon> {props.dane.color}
+    (
+      <Card className={classes.root}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.media}
+            image={props.dane.image}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h4" component="h2">
+              {props.dane.brand} {props.dane.model}
             </Typography>
-          </Grid>
-          <Grid item className={classes.cardata}>
-            <Typography className={classes.carinfo}>
-            <CalendarTodayIcon></CalendarTodayIcon> {props.dane.year}
-            </Typography>
-          </Grid>
-          <Grid item className={classes.cardata}>
-            <Typography className={classes.carinfo}>
-           <SettingsIcon ></SettingsIcon> {props.dane.gearbox}
-            </Typography>
-          </Grid>
-          <Grid item className={classes.cardata}>
-            <Typography className={classes.carinfo}>
-           <EventSeatIcon></EventSeatIcon> {props.dane.seats}
-            </Typography>
-          </Grid>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
+            <Grid item className={classes.cardata}>
+              <Typography className={classes.carinfo}>
+                <OpacityIcon></OpacityIcon> {props.dane.color}
+              </Typography>
+            </Grid>
+            <Grid item className={classes.cardata}>
+              <Typography className={classes.carinfo}>
+                <CalendarTodayIcon></CalendarTodayIcon> {props.dane.year}
+              </Typography>
+            </Grid>
+            <Grid item className={classes.cardata}>
+              <Typography className={classes.carinfo}>
+                <SettingsIcon></SettingsIcon> {props.dane.gearbox}
+              </Typography>
+            </Grid>
+            <Grid item className={classes.cardata}>
+              <Typography className={classes.carinfo}>
+                <EventSeatIcon></EventSeatIcon> {props.dane.seats}
+              </Typography>
+            </Grid>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" color="primary">
             Wynajmij
-        </Button>
-        <Link to={{ 
-        pathname: "/cardetails", 
-        state: {data}
-        }}>
-          <Button size="small" color="primary"> Szczegóły</Button>
-        </Link>
-    
-      </CardActions>
-    </Card>
-    
+          </Button>
+          <Link
+            to={{
+              pathname: '/cardetails',
+              carDetails: { data },
+            }}
+          >
+            <Button size="small" color="primary">
+              {' '}
+              Szczegóły
+            </Button>
+          </Link>
+        </CardActions>
+      </Card>
+    )
   );
 };
 
