@@ -18,7 +18,6 @@ const CarItem = (props) => {
   const classes = useStyles();
   const data = props.dane;
   return (
-    console.log(data),
     (
       <Card className={classes.root}>
         <CardActionArea>
@@ -29,7 +28,7 @@ const CarItem = (props) => {
           />
           <CardContent>
             <Typography gutterBottom variant="h4" component="h2">
-              {props.dane.brand} {props.dane.model}
+              {props.dane.brand} {props.dane.model} 
             </Typography>
             <Grid item className={classes.cardata}>
               <Typography className={classes.carinfo}>
@@ -57,11 +56,11 @@ const CarItem = (props) => {
           <Button size="small" color="primary">
             Wynajmij
           </Button>
-          <Link
-            to={{
-              pathname: '/cardetails',
-              carDetails: { data },
-            }}
+          <Link 
+            to={'/cardetails/${props.dane.id}'
+              // pathname: {'/cardetails/${data.id}'},
+              // carDetails: {data},
+            }
           >
             <Button size="small" color="primary">
               {' '}
