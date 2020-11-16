@@ -8,21 +8,27 @@ import { FormControl } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { updateProfileData } from '../../../api/updateProfileClient';
 import Button from '@material-ui/core/Button';
+import { userIdSelector } from '../../../store/selectors/authSelector';
+import { useSelector } from 'react-redux';
 const DataForm = () => {
   const classes = useStyles();
   const { register, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
+  const userId = useSelector(userIdSelector);
+  console.log('pusto tu');
+  console.log(userId);
   async function updateData(data) {
     try {
       const response = await updateProfileData(
+        userId,
         data.firstName,
         data.lastName,
         data.address,
         data.idcardnumber,
         data.pesel,
       );
-      console.log('pomagam');
+      console.log(`${data.firstName}`);
     } catch (error) {
       console.log(error);
     }

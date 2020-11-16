@@ -16,45 +16,45 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import CarItem from './carItem/CarItem';
 import Box from '@material-ui/core/Box';
 import Pagination from '@material-ui/lab/Pagination';
-const columns = [
-  { id: 'brand', label: 'Brand', minWidth: 120 },
-  { id: 'model', label: 'Model', minWidth: 100 },
-  {
-    id: 'year',
-    label: 'Year',
-    minWidth: 120,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'color',
-    label: 'Color',
-    minWidth: 120,
-    align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
-  },
-  {
-    id: 'engineCapacity',
-    label: 'EngineCapacity',
-    minWidth: 120,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-  },
-  {
-    id: 'seats',
-    label: 'Seats',
-    minWidth: 120,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-  },
-  {
-    id: 'gearbox',
-    label: 'Gearbox',
-    minWidth: 120,
-    align: 'right',
-    format: (value) => value.toFixed(2),
-  },
-];
+// const columns = [
+//   { id: 'brand', label: 'Brand', minWidth: 120 },
+//   { id: 'model', label: 'Model', minWidth: 100 },
+//   {
+//     id: 'year',
+//     label: 'Year',
+//     minWidth: 120,
+//     align: 'right',
+//     format: (value) => value.toLocaleString('en-US'),
+//   },
+//   {
+//     id: 'color',
+//     label: 'Color',
+//     minWidth: 120,
+//     align: 'right',
+//     format: (value) => value.toLocaleString('en-US'),
+//   },
+//   {
+//     id: 'engineCapacity',
+//     label: 'EngineCapacity',
+//     minWidth: 120,
+//     align: 'right',
+//     format: (value) => value.toFixed(2),
+//   },
+//   {
+//     id: 'seats',
+//     label: 'Seats',
+//     minWidth: 120,
+//     align: 'right',
+//     format: (value) => value.toFixed(2),
+//   },
+//   {
+//     id: 'gearbox',
+//     label: 'Gearbox',
+//     minWidth: 120,
+//     align: 'right',
+//     format: (value) => value.toFixed(2),
+//   },
+// ];
 const ListOfCars = () => {
   const classes = useStyles();
   const [cars, setCars] = useState([]);
@@ -81,11 +81,10 @@ const ListOfCars = () => {
   };
 
   return (
-    <>
-      <Grid container className={classes.carContainer} justify="center">
+      <Grid container className={classes.container} justify="center">
         {currentCars.map((data, index) => (
-          <Grid item xs={4} key={index}>
-            <Box display="flex" justifyContent="space-around" className={classes.card}>
+          <Grid item xs={12} md={4} key={index}>
+            <Box display="flex" justifyContent="space-around" className={classes.card} >
               <CarItem dane={data}></CarItem>
             </Box>
           </Grid>
@@ -96,8 +95,8 @@ const ListOfCars = () => {
           style={{ marginTop: '1rem' }}
           color={'secondary'}
         />
-      </Grid>
-    </>
+     </Grid>
+    
   );
 };
 
