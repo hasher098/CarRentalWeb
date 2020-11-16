@@ -8,15 +8,20 @@ import { FormControl } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import { updateProfileData } from '../../../api/updateProfileClient';
 import Button from '@material-ui/core/Button';
+import { userIdSelector } from '../../../store/selectors/authSelector';
+import { useSelector } from 'react-redux';
 const DataForm = () => {
   const classes = useStyles();
   const { register, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
+  const userId = useSelector(userIdSelector);
+  console.log('pusto tu');
+  console.log(userId);
   async function updateData(data) {
     try {
       const response = await updateProfileData(
-        data.id,
+        userId,
         data.firstName,
         data.lastName,
         data.address,
@@ -32,16 +37,6 @@ const DataForm = () => {
     <FormControl onSubmit={handleSubmit(updateData)}>
       <form role="form" noValidate>
         <Grid container spacing={3} className={classes.formcontainer}>
-        <Grid item xs={12} sm={6}>
-            <TextField
-              id="id"
-              name="id"
-              label="Id"
-              fullWidth
-              autoComplete="Id"
-              inputRef={register}
-            />
-          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               id="firstName"

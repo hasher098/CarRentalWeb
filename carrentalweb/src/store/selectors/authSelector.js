@@ -15,6 +15,6 @@ export const userNameSelector = createSelector(
 
 export const userIdSelector = createSelector(
   userSelector,
-  (state)=>state.ID
+  (state)=>state.userId
 );
 
