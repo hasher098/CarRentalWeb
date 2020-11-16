@@ -57,10 +57,9 @@ const CarItem = (props) => {
             Wynajmij
           </Button>
           <Link 
-            to={'/cardetails/${props.dane.id}'
-              // pathname: {'/cardetails/${data.id}'},
-              // carDetails: {data},
-            }
+            to={{
+               pathname: `/cardetails/${props.dane.id}`,
+            }}
           >
             <Button size="small" color="primary">
               {' '}

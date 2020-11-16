@@ -34,7 +34,7 @@ const MainPage = () => {
             <PrivateRoute path="/" exact component={ListOfCars} />
             <PrivateRoute path="/additionalInfo" component={DescPart} />
             <PrivateRoute path="/profile" component={ProfilePage} />
-            <PrivateRoute  exact path="/cardetails/:id" component={CarDetails} />
+            <PrivateRoute  exact path="/cardetails/:carid" component={CarDetails} />
           </Switch>
         </>
       )}

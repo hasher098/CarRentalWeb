@@ -16,13 +16,14 @@ const DataForm = () => {
   async function updateData(data) {
     try {
       const response = await updateProfileData(
+        data.id,
         data.firstName,
         data.lastName,
         data.address,
         data.idcardnumber,
         data.pesel,
       );
-      console.log('pomagam');
+      console.log(`${data.firstName}`);
     } catch (error) {
       console.log(error);
     }
@@ -31,6 +32,16 @@ const DataForm = () => {
     <FormControl onSubmit={handleSubmit(updateData)}>
       <form role="form" noValidate>
         <Grid container spacing={3} className={classes.formcontainer}>
+        <Grid item xs={12} sm={6}>
+            <TextField
+              id="id"
+              name="id"
+              label="Id"
+              fullWidth
+              autoComplete="Id"
+              inputRef={register}
+            />
+          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               id="firstName"
