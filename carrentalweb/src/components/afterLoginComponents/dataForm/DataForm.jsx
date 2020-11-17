@@ -16,8 +16,7 @@ const DataForm = () => {
     mode: 'onSubmit',
   });
   const userId = useSelector(userIdSelector);
-  console.log('pusto tu');
-  console.log(userId);
+
   async function updateData(data) {
     try {
       const response = await updateProfileData(
@@ -28,10 +27,7 @@ const DataForm = () => {
         data.idcardnumber,
         data.pesel,
       );
-      console.log(`${data.firstName}`);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
   return (
     <FormControl onSubmit={handleSubmit(updateData)}>
