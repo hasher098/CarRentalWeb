@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -23,10 +23,27 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useDispatch } from 'react-redux';
 import descPart from '../descPart/DescPart';
 import { logoutAction } from '../../store/actions/logoutActions';
+import {userRole } from '../../store/selectors/authSelector';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const SideBar = () => {
   const classes = useStyles();
+  const role = useSelector(userRole);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [admin, setAdmin] = React.useState(false);
+  console.log("TTTTTUUUTAJ");
+  console.log(role[0]);
+  useEffect(()=>{
+    if(role[0]=="Admin")
+    {
+      setAdmin(true);
+    }
+    else
+    {
+      setAdmin(false);
+    }
+  },[])
+  console.log("tutaj");
+  console.log(admin);
   const dispatch = useDispatch();
   const isAuth = useSelector(authUserSelector);
   const handleClick = (event) => {
@@ -148,6 +165,14 @@ const SideBar = () => {
               <Button>Formularz</Button>
             </Link>
           </ListItem>
+          {admin &&(
+          <ListItem className={classes.MenuItem}>
+            <ExitToAppIcon></ExitToAppIcon>
+            <Link to="/profile">
+              <Button>Formularz</Button>
+            </Link>
+          </ListItem>
+          )}
         </List>
       )}
     </div>

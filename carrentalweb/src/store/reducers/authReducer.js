@@ -1,4 +1,4 @@
-const initialState = { isAuthUser: false, userId: 0, userName: "" };
+const initialState = { isAuthUser: false, userId: 0, userName: "", userRole:"" };
 
 export default function authReducer(
   state,
@@ -14,6 +14,7 @@ export default function authReducer(
         isAuthUser: true,
         userId: action.userId,
         userName: action.user,
+        userRole: action.role,
       };
 
     default:

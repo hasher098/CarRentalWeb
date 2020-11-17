@@ -20,13 +20,13 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { useSelector } from 'react-redux';
-import { userNameSelector } from '../../store/selectors/authSelector';
+import { userNameSelector, userRole } from '../../store/selectors/authSelector';
 
 const TopBar = () => {
   const isName = useSelector(userNameSelector);
+  const role = useSelector(userRole);
   const classes = useStyles();
   const matches = useMediaQuery('(min-width:600px)');
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -51,11 +51,12 @@ const TopBar = () => {
         <Typography variant="h6" noWrap className={classes.title}>
           <img src={matches ? log : log1}></img>
         </Typography>
-        {isName && <Typography>Zalogowany jako: {isName}</Typography>}
+        {matches?
+        isName && <Typography>Zalogowany jako: {isName}</Typography>:<></>}
         <Typography className={classes.mailTypho} variant="h6" noWrap>
           <Button onClick={handleClickOpenDialog} className={classes.but}>
             <EmailIcon className={classes.mailIcon}></EmailIcon>
-            <Typography variant="h6">Kontakt</Typography>
+            {matches ? <Typography variant="h6">Kontakt</Typography> : <></>}
           </Button>
           <Dialog
             open={open}

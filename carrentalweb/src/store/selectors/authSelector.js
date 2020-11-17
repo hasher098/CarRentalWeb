@@ -18,3 +18,9 @@ export const userIdSelector = createSelector(
   (state)=>state.userId
 );
 
+export const userRole = createSelector(
+  userSelector,
+  (state)=>state.userRole
+);
+
+
