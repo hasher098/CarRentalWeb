@@ -10,8 +10,6 @@ const SearchForm = () => {
   async function fetchData() {
     const response = await listOfCarsRequest();
     setData(response.data);
-    console.log('TU');
-    console.log(data);
   }
   useEffect(() => {
     fetchData();

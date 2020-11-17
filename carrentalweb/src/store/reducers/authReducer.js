@@ -9,7 +9,6 @@ export default function authReducer(
       localStorage.clear();
       return initialState;
     case "LOGIN_ACTION":
-        console.log(action);
       return {
         ...state,
         isAuthUser: true,

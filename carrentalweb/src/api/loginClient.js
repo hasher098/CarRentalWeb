@@ -5,6 +5,5 @@ export const loginRequest = async(userName,password)=>{
         userName,password
     });
     localStorage.setItem('token',resp.data.token);
-    console.log(resp);
     return resp;
 };

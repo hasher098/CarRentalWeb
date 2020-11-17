@@ -16,7 +16,7 @@ import ProfilePage from '../afterLoginComponents/profilePage/ProfilePage';
 import CarDetails from '../afterLoginComponents/carDetails/CarDetails';
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
-  console.log(isAuth);
+
   return (
     <Router>
       {!isAuth ? (
@@ -34,7 +34,7 @@ const MainPage = () => {
             <PrivateRoute path="/" exact component={ListOfCars} />
             <PrivateRoute path="/additionalInfo" component={DescPart} />
             <PrivateRoute path="/profile" component={ProfilePage} />
-            <PrivateRoute  exact path="/cardetails/:carid" component={CarDetails} />
+            <PrivateRoute exact path="/cardetails/:carid" component={CarDetails} />
           </Switch>
         </>
       )}
