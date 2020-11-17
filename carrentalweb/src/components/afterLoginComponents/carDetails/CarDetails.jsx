@@ -34,7 +34,7 @@ const CarDetails = ({ match }) => {
         <Skeleton variant="rect" width={400} height={200}></Skeleton>
       ) : (
         <Grid container>
-          <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={12}className={classes.titlebox}>
             <Typography className={classes.title}>{car.brand + ' ' + car.model}</Typography>
           </Grid>
           <Grid item className={classes.photobox} xs={12} md={6}>
@@ -70,7 +70,7 @@ const CarDetails = ({ match }) => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={12}>
-            <Link to="/">
+            <Link style={{ textDecoration: 'none' }} to="/">
               <Button variant="contained" color="secondary" className={classes.button}>
                 Powrót
               </Button>

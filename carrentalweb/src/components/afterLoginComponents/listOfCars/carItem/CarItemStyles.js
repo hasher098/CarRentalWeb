@@ -17,7 +17,17 @@ const useStyles = makeStyles({
       },
       ico:{
          marginTop: "2px",
-      }
+      },
+      action:{
+        backgroundColor:"#811A0B",
+      },
+      bt:{
+        backgroundColor:"#D0D0D0",
+        '&:hover': {
+          backgroundColor:"#811A0B",
+          color:"white",
+        },
+      },
   });
 
   export default useStyles;

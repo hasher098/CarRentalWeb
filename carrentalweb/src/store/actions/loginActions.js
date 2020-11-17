@@ -9,7 +9,7 @@ userName,password
   try {
 
     const data = await loginRequest(userName,password);
-    await dispatch({ type: "LOGIN_ACTION", userId: data.data.id, user: data.data.user});
+    await dispatch({ type: "LOGIN_ACTION", userId: data.data.id, user: data.data.user, role: data.data.role});
     return true;
   } catch (error) {
     return false;

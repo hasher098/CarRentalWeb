@@ -52,16 +52,16 @@ const CarItem = (props) => {
             </Grid>
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
+        <CardActions className={classes.action}>
+          <Button size="small" className={classes.bt}>
             Wynajmij
           </Button>
-          <Link 
+          <Link style={{ textDecoration: 'none' }}
             to={{
                pathname: `/cardetails/${props.dane.id}`,
             }}
           >
-            <Button size="small" color="primary">
+            <Button size="small" className={classes.bt} underline="none">
               {' '}
               Szczegóły
             </Button>
