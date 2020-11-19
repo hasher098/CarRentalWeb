@@ -9,43 +9,36 @@ import useStyles from './SideBarStyles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import RegisterWindow from '../registerWindow/RegisterWindow';
 import LoginWindow from '../loginWindow/LoginWindows';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
-import { useSelector } from 'react-redux';
 import { authUserSelector } from '../../store/selectors/authSelector';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useDispatch } from 'react-redux';
 import descPart from '../descPart/DescPart';
 import { logoutAction } from '../../store/actions/logoutActions';
-import {userRole } from '../../store/selectors/authSelector';
+import { userRole } from '../../store/selectors/authSelector';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const SideBar = () => {
   const classes = useStyles();
   const role = useSelector(userRole);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [admin, setAdmin] = React.useState(false);
-  console.log("TTTTTUUUTAJ");
-  console.log(role[0]);
-  useEffect(()=>{
-    if(role[0]=="Admin")
-    {
+  const isAuth = useSelector(authUserSelector);
+  useEffect(() => {
+    if (role[0] == 'Admin') {
       setAdmin(true);
-    }
-    else
-    {
+    } else {
       setAdmin(false);
     }
-  },[])
-  console.log("tutaj");
-  console.log(admin);
+  }, [isAuth]);
+
   const dispatch = useDispatch();
-  const isAuth = useSelector(authUserSelector);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -165,13 +158,14 @@ const SideBar = () => {
               <Button>Formularz</Button>
             </Link>
           </ListItem>
-          {admin &&(
-          <ListItem className={classes.MenuItem}>
-            <ExitToAppIcon></ExitToAppIcon>
-            <Link to="/profile">
-              <Button>Formularz</Button>
-            </Link>
-          </ListItem>
+          <Divider></Divider>
+          {admin && (
+            <ListItem className={classes.MenuItem}>
+              <ExitToAppIcon></ExitToAppIcon>
+              <Link to="/newcar">
+                <Button>Dodaj Samochód</Button>
+              </Link>
+            </ListItem>
           )}
         </List>
       )}
