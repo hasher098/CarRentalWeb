@@ -13,8 +13,32 @@ import Radio from '@material-ui/core/Radio';
 import FormLabel from '@material-ui/core/FormLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Skeleton from '@material-ui/lab/Skeleton';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { useEffect } from 'react';
 const NewCar = () => {
   const classes = useStyles();
+  const [roof, setRoofRack] = React.useState(false);
+  const [link, setLink] = React.useState('newcar');
+  const [photo, setPhoto] = React.useState(null);
+  const [imag, setImag] = React.useState(null);
+  const [status, setStatus] = React.useState(null);
+  ////////////////////////////////////////
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const [open, setOpen] = React.useState(false);
+
+  ////////////////////////////////////////
+
   const { register, errors, handleSubmit } = useForm({
     mode: 'onSubmit',
   });
@@ -34,14 +58,13 @@ const NewCar = () => {
         data.bodyType,
         data.image,
       );
-      console.log(`${data.color}`);
+      setStatus('Samochód dodany pomyślnie');
+      setLink('/');
     } catch (error) {
       console.log(error);
+      setStatus('Błąd podczas dodawania samochodu');
     }
   }
-  const [roof, setRoofRack] = React.useState(false);
-  const [photo, setPhoto] = React.useState(null);
-  const [imag, setImag] = React.useState(null);
 
   const handleChange = (event) => {
     setRoofRack(event.target.checked);
@@ -143,7 +166,6 @@ const NewCar = () => {
               inputRef={register}
             />
           </Grid>
-
           <Grid item xs={12} md={6}>
             <TextField
               id="bodyType"
@@ -171,9 +193,32 @@ const NewCar = () => {
               label="Bagażnik dachowy"
             />
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <Button type="submit" fullWidth variant="contained" color="primary" onClick={handleClick}>
             Dodaj samochód
           </Button>
+          <Dialog
+            open={open}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogContent>
+              <Typography className={classes.status}>
+                {status}
+                <Link style={{ textDecoration: 'none' }} to={link}>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    onClick={handleClose}
+                  >
+                    Powrót
+                  </Button>
+                </Link>
+              </Typography>
+            </DialogContent>
+            <DialogActions></DialogActions>
+          </Dialog>
         </Grid>
       </form>
     </FormControl>
