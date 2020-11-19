@@ -47,13 +47,10 @@ const NewCar = () => {
     setRoofRack(event.target.checked);
   };
 
-  const handleChange1 = () => {
-    // setPhoto(register.image);
-    console.log();
+  const handleChange1 = (event) => {
+    setImag(event.target.value);
   };
 
-  console.log(roof);
-  console.log(imag);
   return (
     <FormControl onSubmit={handleSubmit(addNewCar)}>
       <form role="form" noValidate>
