@@ -18,7 +18,7 @@ import NewCar from '../afterLoginComponents/newCar/NewCar';
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
 
-  console.log(isAuth);
+
   return (
     <Router>
       {!isAuth ? (
@@ -37,7 +37,9 @@ const MainPage = () => {
             <PrivateRoute path="/additionalInfo" component={DescPart} />
             <PrivateRoute path="/profile" component={ProfilePage} />
             <PrivateRoute exact path="/cardetails/:carid" component={CarDetails} />
+
             <PrivateRoute exact path="/newcar" component={NewCar} />
+
           </Switch>
         </>
       )}

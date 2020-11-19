@@ -11,6 +11,9 @@ const useStyles = makeStyles({
     },
     card:{
       marginTop:`1rem`
+    },
+    searchBar:{
+      minWidth:`100px`
     }
   });
 
