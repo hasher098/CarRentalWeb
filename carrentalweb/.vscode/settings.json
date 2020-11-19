@@ -1,0 +1,6 @@
+{
+    "prettier.endOfLine": "auto",
+    "prettier.insertPragma": true,
+    "prettier.jsxBracketSameLine": true,
+    "prettier.printWidth": 60
+}

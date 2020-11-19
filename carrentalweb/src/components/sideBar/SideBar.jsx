@@ -31,7 +31,7 @@ const SideBar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [admin, setAdmin] = React.useState(false);
   console.log("TTTTTUUUTAJ");
-  console.log(role[0]);
+  console.log(role);
   useEffect(()=>{
     if(role[0]=="Admin")
     {
@@ -168,8 +168,8 @@ const SideBar = () => {
           {admin &&(
           <ListItem className={classes.MenuItem}>
             <ExitToAppIcon></ExitToAppIcon>
-            <Link to="/profile">
-              <Button>Formularz</Button>
+            <Link to="/newcar">
+              <Button>Dodaj Samochód</Button>
             </Link>
           </ListItem>
           )}

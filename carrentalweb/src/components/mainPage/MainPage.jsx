@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import PrivateRoute from '../helpers/privateRoute/PrivateRoute';
 import ProfilePage from '../afterLoginComponents/profilePage/ProfilePage';
 import CarDetails from '../afterLoginComponents/carDetails/CarDetails';
+import NewCar from '../afterLoginComponents/newCar/NewCar'
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
   console.log(isAuth);
@@ -35,6 +36,7 @@ const MainPage = () => {
             <PrivateRoute path="/additionalInfo" component={DescPart} />
             <PrivateRoute path="/profile" component={ProfilePage} />
             <PrivateRoute  exact path="/cardetails/:carid" component={CarDetails} />
+            <PrivateRoute path="/newcar" component={NewCar} />
           </Switch>
         </>
       )}
