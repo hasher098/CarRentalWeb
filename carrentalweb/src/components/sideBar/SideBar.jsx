@@ -158,6 +158,7 @@ const SideBar = () => {
               <Button>Formularz</Button>
             </Link>
           </ListItem>
+          <Divider></Divider>
           {admin && (
             <ListItem className={classes.MenuItem}>
               <ExitToAppIcon></ExitToAppIcon>
