@@ -8,6 +8,11 @@ import Box from '@material-ui/core/Box';
 import Pagination from '@material-ui/lab/Pagination';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const ListOfCars = () => {
   const classes = useStyles();
@@ -43,6 +48,9 @@ const ListOfCars = () => {
     if (queryBrand.length == 0) {
       setCurrentCars(allCars.slice(currentPage * 6 - 6, currentPage * 6));
     }
+    if (queryModel.length == 0) {
+      setCurrentCars(allCars.slice(currentPage * 6 - 6, currentPage * 6));
+    }
     if (queryBrand.length > 0) {
       setCurrentCars(cars.slice(currentPage * 6 - 6, currentPage * 6));
     }
@@ -53,14 +61,29 @@ const ListOfCars = () => {
 
   useEffect(() => {
     const filteredCars = allCars.filter((x) => x.brand.toLowerCase().match(re));
-    setCars(filteredCars);
-    setCurrentCars(filteredCars.slice(currentPage * 6 - 6, currentPage * 6));
+    let newCars = [];
+
+    if (queryBrand.length > 0) {
+      newCars = filteredCars.filter((x) => x.model.toLowerCase().match(re2));
+    } else {
+      newCars = filteredCars;
+    }
+
+    setCars(newCars);
+    setCurrentCars(newCars.slice(currentPage * 6 - 6, currentPage * 6));
   }, [queryBrand]);
 
   useEffect(() => {
     const filteredCars = allCars.filter((x) => x.model.toLowerCase().match(re2));
-    setCars(filteredCars);
-    setCurrentCars(filteredCars.slice(currentPage * 6 - 6, currentPage * 6));
+    let newCars = [];
+    if (queryBrand.length > 0) {
+      newCars = filteredCars.filter((x) => x.brand.toLowerCase().match(re));
+    } else {
+      newCars = filteredCars;
+    }
+
+    setCars(newCars);
+    setCurrentCars(newCars.slice(currentPage * 6 - 6, currentPage * 6));
   }, [queryModel]);
 
   const handleChangePage = (e, pageIndex) => {
@@ -85,8 +108,8 @@ const ListOfCars = () => {
 
   return (
     <Grid container className={classes.container} justify="center">
-      <Grid container justify="space-around">
-        <Grid item>
+      <Grid container justify="space-evenly">
+        <Grid item xs={4}>
           <Autocomplete
             className={classes.searchBar}
             {...brandProps}
@@ -97,6 +120,7 @@ const ListOfCars = () => {
               <TextField
                 {...params}
                 onChange={handleInputChangeBrand}
+                onSubmit={handleInputChangeBrand}
                 onBlur={handleInputChangeBrand}
                 label="Marka"
                 margin="normal"
@@ -104,7 +128,7 @@ const ListOfCars = () => {
             )}
           />
         </Grid>
-        <Grid item>
+        <Grid item xs={4}>
           <Autocomplete
             className={classes.searchBar}
             {...modelProps}
@@ -116,6 +140,7 @@ const ListOfCars = () => {
                 {...params}
                 onChange={handleInputChangeModel}
                 onBlur={handleInputChangeModel}
+                onSubmit={handleInputChangeModel}
                 label="Model"
                 margin="normal"
               />

@@ -13,7 +13,7 @@ const useStyles = makeStyles({
       marginTop:`1rem`
     },
     searchBar:{
-      minWidth:`200px`
+      minWidth:`100px`
     }
   });
 
