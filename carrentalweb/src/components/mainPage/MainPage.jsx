@@ -15,9 +15,11 @@ import PrivateRoute from '../helpers/privateRoute/PrivateRoute';
 import ProfilePage from '../afterLoginComponents/profilePage/ProfilePage';
 import CarDetails from '../afterLoginComponents/carDetails/CarDetails';
 import NewCar from '../afterLoginComponents/newCar/NewCar';
+import AddCopy from '../afterLoginComponents/addCopy/AddCopy';
+import CarDelete from '../afterLoginComponents/carDelete/CarDelete';
+import CopyDelete from '../afterLoginComponents/copyDelete/CopyDelete';
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
-
 
   return (
     <Router>
@@ -39,7 +41,9 @@ const MainPage = () => {
             <PrivateRoute exact path="/cardetails/:carid" component={CarDetails} />
 
             <PrivateRoute exact path="/newcar" component={NewCar} />
-
+            <PrivateRoute exact path="/addcopy" component={AddCopy} />
+            <PrivateRoute exact path="/cardelete" component={CarDelete} />
+            <PrivateRoute exact path="/copydelete" component={CopyDelete} />
           </Switch>
         </>
       )}

@@ -159,13 +159,34 @@ const SideBar = () => {
             </Link>
           </ListItem>
           <Divider></Divider>
+
           {admin && (
-            <ListItem className={classes.MenuItem}>
-              <ExitToAppIcon></ExitToAppIcon>
-              <Link to="/newcar">
-                <Button>Dodaj Samochód</Button>
-              </Link>
-            </ListItem>
+            <>
+              <ListItem className={classes.MenuItem}>
+                <ExitToAppIcon></ExitToAppIcon>
+                <Link to="/newcar">
+                  <Button>Dodaj Samochód</Button>
+                </Link>
+              </ListItem>
+              <ListItem className={classes.MenuItem}>
+                <ExitToAppIcon></ExitToAppIcon>
+                <Link to="/addcopy">
+                  <Button>Dodaj Egzemplarz</Button>
+                </Link>
+              </ListItem>
+              <ListItem className={classes.MenuItem}>
+                <ExitToAppIcon></ExitToAppIcon>
+                <Link to="/cardelete">
+                  <Button>Usuń samochód</Button>
+                </Link>
+              </ListItem>
+              <ListItem className={classes.MenuItem}>
+                <ExitToAppIcon></ExitToAppIcon>
+                <Link to="/copydelete">
+                  <Button>Usuń Egzemplarz</Button>
+                </Link>
+              </ListItem>
+            </>
           )}
         </List>
       )}
