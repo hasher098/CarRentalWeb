@@ -92,7 +92,6 @@ const SideBar = () => {
   const logout = () => {
     dispatch(logoutAction());
   };
-
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
@@ -162,6 +161,7 @@ const SideBar = () => {
 
           {admin && (
             <>
+              <Typography className={classes.admin}>ADMIN:</Typography>
               <ListItem className={classes.MenuItem}>
                 <ExitToAppIcon></ExitToAppIcon>
                 <Link to="/newcar">
@@ -184,6 +184,18 @@ const SideBar = () => {
                 <ExitToAppIcon></ExitToAppIcon>
                 <Link to="/copydelete">
                   <Button>Usuń Egzemplarz</Button>
+                </Link>
+              </ListItem>
+              <ListItem className={classes.MenuItem}>
+                <ExitToAppIcon></ExitToAppIcon>
+                <Link to="/banuser">
+                  <Button>Zbanuj użytkownika</Button>
+                </Link>
+              </ListItem>
+              <ListItem className={classes.MenuItem}>
+                <ExitToAppIcon></ExitToAppIcon>
+                <Link to="/blacklist">
+                  <Button>Czarna lista</Button>
                 </Link>
               </ListItem>
             </>
