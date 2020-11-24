@@ -1,13 +1,11 @@
 const initialState = { carCopyId:0 };
 
 export default function rentCarReducer(
-  state,
+  state=initialState,
   action
 ) {
   switch (action.type) {
-    case "LOGOUT_ACTION":
-      localStorage.clear();
-      return initialState;
+
     case "CHOOSE_CAR":
       return {
         ...state,
@@ -15,6 +13,6 @@ export default function rentCarReducer(
       };
 
     default:
-      return initialState;
+      return state;
   }
 }

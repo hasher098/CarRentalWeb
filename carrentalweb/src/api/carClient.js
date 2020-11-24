@@ -63,4 +63,7 @@ export const rentCar = async (userId,carCopyId,RentDate,ReturnDate)=>{
     const resp = await apiClient.post(`api/Rents/RentCar`,{
         userId,carCopyId,RentDate,ReturnDate
     });
+    console.log("client");
+    console.log(resp);
+    return resp;
 }
