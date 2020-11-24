@@ -3,9 +3,23 @@ import {
 } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+    container: {
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "30px",
+
+    },
     formcontainer: {
-        marginLeft: 'auto',
-        marginRight: 'auto',
+        display: 'block',
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "30px",
+        width: "100%",
+    },
+    auto: {
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: "100%",
     },
     photo: {
         maxWidth: '100%',
@@ -24,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '24px',
         textAlign: 'center',
     },
+    button: {
+        marginTop: "20px",
+    }
 }));
 
 export default useStyles;

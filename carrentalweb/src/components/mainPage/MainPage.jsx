@@ -18,8 +18,14 @@ import NewCar from '../afterLoginComponents/newCar/NewCar';
 import AddCopy from '../afterLoginComponents/addCopy/AddCopy';
 import CarDelete from '../afterLoginComponents/carDelete/CarDelete';
 import CopyDelete from '../afterLoginComponents/copyDelete/CopyDelete';
+
+import BanUser from '../afterLoginComponents/banUser/BanUser';
+import BlackList from '../afterLoginComponents/blackList/BlackList';
+
 import RentCar from '../afterLoginComponents/rentCar/RentCar.jsx';
+
 import RentCarWithoutButton from '../afterLoginComponents/rentCar/RentCarWithoutButton';
+
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
 
@@ -47,6 +53,8 @@ const MainPage = () => {
             <PrivateRoute exact path="/addcopy" component={AddCopy} />
             <PrivateRoute exact path="/cardelete" component={CarDelete} />
             <PrivateRoute exact path="/copydelete" component={CopyDelete} />
+            <PrivateRoute exact path="/banuser" component={BanUser} />
+            <PrivateRoute exact path="/blacklist" component={BlackList} />
           </Switch>
         </>
       )}
