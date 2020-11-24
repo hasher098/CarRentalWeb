@@ -23,6 +23,7 @@ import { logoutAction } from '../../store/actions/logoutActions';
 import { userRole } from '../../store/selectors/authSelector';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import RentCar from '../afterLoginComponents/rentCar/RentCar';
 const SideBar = () => {
   const classes = useStyles();
   const role = useSelector(userRole);
@@ -155,6 +156,12 @@ const SideBar = () => {
             <ExitToAppIcon></ExitToAppIcon>
             <Link to="/profile">
               <Button>Formularz</Button>
+            </Link>
+          </ListItem>
+          <ListItem className={classes.MenuItem}>
+            <ExitToAppIcon></ExitToAppIcon>
+            <Link to="/rentCar">
+              <Button>Wynajmij Samochód</Button>
             </Link>
           </ListItem>
           <Divider></Divider>
