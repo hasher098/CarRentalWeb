@@ -85,7 +85,7 @@ const NewCar = () => {
               <Skeleton
                 className={classes.photo}
                 variant="rect"
-                width="400px"
+                maxWidth="400px"
                 height="310px"
                 xs={12}
                 md={12}

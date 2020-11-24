@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 import DialogContent from '@material-ui/core/DialogContent';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { listOfCarsRequest } from '../../../api/carClient';
 import { newCopy } from '../../../api/carClient';
 import { FormControl } from '@material-ui/core';
@@ -55,70 +56,91 @@ const AddCopy = () => {
     }
   }
 
-  console.log(idcar);
   return (
-    <FormControl onSubmit={handleSubmit(addNewCopy)}>
-      <form role="form" noValidate>
-        <Grid container spacing={3} className={classes.formcontainer} md={12}>
-          <Grid item className={classes.photobox} xs={12} md={12}>
-            <img src={image} className={classes.photo}></img>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <Autocomplete
-              id="combo-box-demo"
-              options={data}
-              onChange={(event, newValue) => {
-                setIdcar(newValue.id);
-                setImage(newValue.image);
-              }}
-              getOptionLabel={(option) =>
-                option.brand + ' ' + option.model + ' Pojemność: ' + option.engineCapacity
-              }
-              style={{ backgroundColor: `white` }}
-              renderInput={(params) => (
-                <TextField {...params} label="Wybierz samochód" variant="outlined" />
-              )}
-            ></Autocomplete>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <TextField
-              id="registationNumber"
-              name="registationNumber"
-              label="Numer rejestracyjny"
-              fullWidth
-              autoComplete="registationNumber"
-              inputRef={register}
-            />
-          </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" onClick={handleClick}>
-            Dodaj egzemplarz
-          </Button>
-          <Dialog
-            open={open}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogContent>
-              <Typography className={classes.status}>
-                {status}
-                <Link style={{ textDecoration: 'none' }} to={link}>
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    onClick={handleClose}
-                  >
-                    Powrót
-                  </Button>
-                </Link>
-              </Typography>
-            </DialogContent>
-            <DialogActions></DialogActions>
-          </Dialog>
-        </Grid>
-      </form>
-    </FormControl>
+    <Grid container item xs={12} md={6} className={classes.container}>
+      <Grid item className={classes.photobox} xs={12} md={12} lg={12}>
+        {image ? (
+          <img src={image} className={classes.photo} xs={12} md={12} lg={12} />
+        ) : (
+          <Skeleton
+            className={classes.photo}
+            variant="rect"
+            maxWidth="400px"
+            height="310px"
+            xs={12}
+            md={12}
+            lg={12}
+          />
+        )}
+      </Grid>
+      <Grid item className={classes.formcontainer} xs={12} md={6}>
+        <FormControl onSubmit={handleSubmit(addNewCopy)}>
+          <form role="form" noValidate>
+            <Grid item xs={12} md={12}>
+              <Autocomplete
+                id="combo-box-demo"
+                options={data}
+                onChange={(event, newValue) => {
+                  setIdcar(newValue.id);
+                  setImage(newValue.image);
+                }}
+                getOptionLabel={(option) =>
+                  option.brand + ' ' + option.model + ' Pojemność: ' + option.engineCapacity
+                }
+                style={{ backgroundColor: `white` }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Wybierz samochód" variant="outlined" />
+                )}
+              ></Autocomplete>
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <TextField
+                id="registationNumber"
+                name="registationNumber"
+                label="Numer rejestracyjny"
+                fullWidth
+                autoComplete="registationNumber"
+                inputRef={register}
+              />
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                onClick={handleClick}
+              >
+                Dodaj egzemplarz
+              </Button>
+            </Grid>
+            <Dialog
+              open={open}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogContent>
+                <Typography className={classes.status}>
+                  {status}
+                  <Link style={{ textDecoration: 'none' }} to={link}>
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      onClick={handleClose}
+                    >
+                      Powrót
+                    </Button>
+                  </Link>
+                </Typography>
+              </DialogContent>
+              <DialogActions></DialogActions>
+            </Dialog>
+          </form>
+        </FormControl>
+      </Grid>
+    </Grid>
   );
 };
 
