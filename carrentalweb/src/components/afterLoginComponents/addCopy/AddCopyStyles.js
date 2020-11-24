@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '24px',
         textAlign: 'center',
     },
+    button: {
+        marginTop: "20px",
+    }
 }));
 
 export default useStyles;
