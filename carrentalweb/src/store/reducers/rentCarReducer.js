@@ -9,7 +9,7 @@ export default function rentCarReducer(
     case "CHOOSE_CAR":
       return {
         ...state,
-        carCopyId:action.carCopyId
+        carCopyId:action.car
       };
 
     default:

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useStyles from './RentCarStyles';
 import { useSelector } from 'react-redux';
 import Stepper from '@material-ui/core/Stepper';
@@ -10,10 +10,9 @@ import DataForm from '../dataForm/DataForm';
 import FirstStep from './steps/firstStep/FirstStep';
 import ThirdStep from './steps/thirdStep/ThirdStep';
 
-const RentCar = ({ match }) => {
+const RentCarWithoutButton = ({ match }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState(new Set());
-  const [details, setDetails] = useState();
   const steps = getSteps();
   const {
     params: { carid },
@@ -24,23 +23,18 @@ const RentCar = ({ match }) => {
     return ['Wybierz samochód', 'Sprawdź/Uzupełnij Dane', 'Podsumowanie'];
   }
 
-  function getDetails(dane) {
-    setDetails(dane);
-  }
-
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return <FirstStep choosenCar={carid} giveDetails={getDetails} />;
+        return <FirstStep choosenCar={carid} />;
       case 1:
         return <DataForm />;
       case 2:
-        return <ThirdStep allDetails={details} />;
+        return <ThirdStep />;
       default:
         return 'Unknown step';
     }
   }
-  useEffect(() => {}, [details]);
 
   const totalSteps = () => {
     return getSteps().length;
@@ -120,20 +114,6 @@ const RentCar = ({ match }) => {
             <Typography component={'div'} className={classes.instructions}>
               {getStepContent(activeStep)}
             </Typography>
-            <div className={classes.buttonContainer}>
-              <Button disabled={activeStep === 0} onClick={handleBack} className={classes.button}>
-                Cofnij
-              </Button>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={handleNext}
-                onClick={handleComplete}
-                className={classes.button}
-              >
-                Dalej
-              </Button>
-            </div>
           </div>
         )}
       </div>
@@ -141,4 +121,4 @@ const RentCar = ({ match }) => {
   );
 };
 
-export default RentCar;
+export default RentCarWithoutButton;
