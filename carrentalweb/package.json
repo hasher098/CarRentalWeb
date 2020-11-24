@@ -27,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+      "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,5 +51,5 @@
     "eslint-plugin-prettier": "^3.1.4",
     "prettier": "2.1.2",
     "redux-devtools-extension": "^2.13.8"
-  }
-}
+  },
+  "homepage": "https://imię.github.io/nazwa"}
