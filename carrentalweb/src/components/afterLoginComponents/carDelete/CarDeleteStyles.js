@@ -3,9 +3,14 @@ import {
 } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    formcontainer: {
+    container: {
         marginLeft: 'auto',
         marginRight: 'auto',
+        bacgroundColor: "red",
+    },
+    form: {
+        marginLeft: "auto",
+        marginRight: "auto",
     },
     photo: {
         maxWidth: '100%',

@@ -79,6 +79,7 @@ const AddCopy = () => {
             <Grid item xs={12} md={12}>
               <Autocomplete
                 id="combo-box-demo"
+                fullWidth
                 options={data}
                 onChange={(event, newValue) => {
                   setIdcar(newValue.id);
@@ -96,6 +97,7 @@ const AddCopy = () => {
             <Grid item xs={12} md={12}>
               <TextField
                 id="registationNumber"
+                fullWidth
                 name="registationNumber"
                 label="Numer rejestracyjny"
                 fullWidth
@@ -103,7 +105,7 @@ const AddCopy = () => {
                 inputRef={register}
               />
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={12} className={classes.button}>
               <Button
                 type="submit"
                 fullWidth

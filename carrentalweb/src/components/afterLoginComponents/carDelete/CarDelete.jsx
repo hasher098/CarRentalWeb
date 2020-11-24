@@ -56,58 +56,66 @@ const CarDelete = () => {
     }
   }
   return (
-    <FormControl onSubmit={handleSubmit(carDeleteFunc)}>
-      <form role="form" noValidate>
-        <Grid container spacing={3} className={classes.formcontainer} xs={12} md={12}>
-          <Grid item className={classes.photobox} xs={12} md={12}>
-            <img src={image} className={classes.photo}></img>
-          </Grid>
-          <Grid item xs={12} md={12}>
-            <Autocomplete
-              id="combo-box-demo"
-              options={data}
-              onChange={(event, newValue) => {
-                setIdcar(newValue.id);
-                setImage(newValue.image);
-              }}
-              getOptionLabel={(option) =>
-                option.brand + ' ' + option.model + ' Pojemność: ' + option.engineCapacity
-              }
-              style={{ backgroundColor: `white` }}
-              renderInput={(params) => (
-                <TextField {...params} label="Wybierz samochód" variant="outlined" />
-              )}
-            ></Autocomplete>
-          </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary" onClick={handleClick}>
-            Usuń Samochód
-          </Button>
-          <Dialog
-            open={open}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogContent>
-              <Typography className={classes.status}>
-                {status}
-                <Link style={{ textDecoration: 'none' }} to={link}>
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    color="primary"
-                    onClick={handleClose}
-                  >
-                    Powrót
-                  </Button>
-                </Link>
-              </Typography>
-            </DialogContent>
-            <DialogActions></DialogActions>
-          </Dialog>
-        </Grid>
-      </form>
-    </FormControl>
+    <Grid container item xs={12} md={8} className={classes.container}>
+      <Grid item xs={12} md={12} className={classes.form}>
+        <FormControl onSubmit={handleSubmit(carDeleteFunc)}>
+          <form role="form" noValidate>
+            <Grid item className={classes.photobox} xs={12} md={12}>
+              <img src={image} className={classes.photo}></img>
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <Autocomplete
+                id="combo-box-demo"
+                options={data}
+                onChange={(event, newValue) => {
+                  setIdcar(newValue.id);
+                  setImage(newValue.image);
+                }}
+                getOptionLabel={(option) =>
+                  option.brand + ' ' + option.model + ' Pojemność: ' + option.engineCapacity
+                }
+                style={{ backgroundColor: `white` }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Wybierz samochód" variant="outlined" />
+                )}
+              ></Autocomplete>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              onClick={handleClick}
+            >
+              Usuń Samochód
+            </Button>
+            <Dialog
+              open={open}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogContent>
+                <Typography className={classes.status}>
+                  {status}
+                  <Link style={{ textDecoration: 'none' }} to={link}>
+                    <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      color="primary"
+                      onClick={handleClose}
+                    >
+                      Powrót
+                    </Button>
+                  </Link>
+                </Typography>
+              </DialogContent>
+              <DialogActions></DialogActions>
+            </Dialog>
+          </form>
+        </FormControl>
+      </Grid>
+    </Grid>
   );
 };
 
