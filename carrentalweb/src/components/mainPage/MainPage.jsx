@@ -18,6 +18,7 @@ import NewCar from '../afterLoginComponents/newCar/NewCar';
 import AddCopy from '../afterLoginComponents/addCopy/AddCopy';
 import CarDelete from '../afterLoginComponents/carDelete/CarDelete';
 import CopyDelete from '../afterLoginComponents/copyDelete/CopyDelete';
+import RentCar from '../afterLoginComponents/rentCar/RentCar.jsx';
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
 
@@ -39,7 +40,8 @@ const MainPage = () => {
             <PrivateRoute path="/additionalInfo" component={DescPart} />
             <PrivateRoute path="/profile" component={ProfilePage} />
             <PrivateRoute exact path="/cardetails/:carid" component={CarDetails} />
-
+            <PrivateRoute exact path="/RentCar" component={RentCar} />
+            <PrivateRoute exact path="/RentCar/:carid" component={RentCar} />
             <PrivateRoute exact path="/newcar" component={NewCar} />
             <PrivateRoute exact path="/addcopy" component={AddCopy} />
             <PrivateRoute exact path="/cardelete" component={CarDelete} />
