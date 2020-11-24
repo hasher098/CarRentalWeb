@@ -6,6 +6,11 @@ export const listOfCarsRequest = async () => {
     return await apiClient.get(`/api/Cars`);
 
 };
+
+export const listOfAvCarsRequest = async () => {
+    return await apiClient.get(`/api/Cars/AvailableCars`);
+
+};
 export const listOfCopyRequest = async () => {
     return await apiClient.get(`/api/CarCopies`);
 };
@@ -52,4 +57,10 @@ export const copyDelete = async (copiesID) => {
         id: copiesID,
     });
     return resp;
+}
+
+export const rentCar = async (userId,carCopyId,RentDate,ReturnDate)=>{
+    const resp = await apiClient.post(`api/Rents/RentCar`,{
+        userId,carCopyId,RentDate,ReturnDate
+    });
 }

@@ -76,7 +76,7 @@ const DataForm = () => {
             <TextField id="pesel" name="pesel" label="Pesel" fullWidth inputRef={register} />
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="primary">
-            Update
+            ZATWIERDŹ
           </Button>
         </Grid>
       </form>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import useStyles from './ListOfCarsStyles';
-import { listOfCarsRequest } from '../../../api/carClient';
+import { listOfAvCarsRequest } from '../../../api/carClient';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import CarItem from './carItem/CarItem';
@@ -29,9 +29,10 @@ const ListOfCars = () => {
   const re2 = RegExp(`.*${queryModel.toLowerCase().split('').join('.*')}.*`);
 
   async function fetchCars() {
-    const response = await listOfCarsRequest();
+    const response = await listOfAvCarsRequest();
     const rows = response.data;
     setCars(rows);
+    console.log(response);
     setAllCars(rows);
     setCurrentCars(rows.slice(currentPage * 6 - 6, currentPage * 6));
     const uniqueBrands = [...new Set(rows.map((item) => item.brand))];
