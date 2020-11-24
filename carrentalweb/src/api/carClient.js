@@ -47,9 +47,8 @@ export const newCopy = async (regNum, idCar, isRented) => {
     return resp;
 }
 export const carDelete = async (carid) => {
-    const resp = await apiClient.delete(`api/Cars/${carid}`, {
-        id: carid,
-    });
+    const resp = await apiClient.delete(`api/Cars/${carid}`
+    );
     return resp;
 }
 export const copyDelete = async (copiesID) => {
@@ -63,4 +62,19 @@ export const rentCar = async (userId,carCopyId,RentDate,ReturnDate)=>{
     const resp = await apiClient.post(`api/Rents/RentCar`,{
         userId,carCopyId,RentDate,ReturnDate
     });
+    return resp;
+}
+
+export const copyCarsList = async(id)=>{
+    const resp = await apiClient.get(`/api/CarCopies/GetListOfCarCopies/${id}`,{
+        copyId:id,
+    });
+    return resp;
+}
+
+export const getPricingCar = async(id)=>{
+    const resp = await apiClient.get(`/api/Pricings/PricingByCarCopyId/${id}`,{
+        id:id
+    });
+    return resp;
 }
