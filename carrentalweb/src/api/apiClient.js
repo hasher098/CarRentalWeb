@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const apiClient = axios.create({
-    baseURL:"https://localhost:44397"
+    baseURL:"https://carrentalapi20201123180919.azurewebsites.net/"
 });
