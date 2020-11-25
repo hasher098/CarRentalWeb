@@ -7,16 +7,30 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { listOfRents } from '../../../api/rentClient';
+import { nameInRents } from '../../../api/rentClient';
 import { userDetails } from '../../../api/userClient';
 import { copyDetails } from '../../../api/carClient';
 import Paper from '@material-ui/core/Paper';
-const BanUser = () => {
+const RentList = () => {
   const classes = useStyles();
   const [rents, setRents] = useState([]);
   const [userData, setUserData] = useState([]);
   const [copyData, setCopyData] = useState();
   async function getRentsList() {
     const response = await listOfRents();
+    const namesResponse = await nameInRents();
+
+    response.data.map(function (x) {
+      let result = namesResponse.data.filter((a1) => a1.id == x.userID);
+      if (result.length > 0) {
+        x.userID = result[0].firstName + ' ' + result[0].lastName;
+      }
+      console.log(result);
+      return x;
+    });
+
+    console.log(response.data); // z tego userID
+    console.log(namesResponse.data); //z tego id
     setRents(response.data);
   }
 
@@ -42,7 +56,7 @@ const BanUser = () => {
               Id
             </TableCell>
             <TableCell align="right" className={classes.naglowek}>
-              Id użytkownika
+              Imie i Nazwisko
             </TableCell>
             <TableCell align="right" className={classes.naglowek}>
               Id CarCopy
@@ -81,4 +95,4 @@ const BanUser = () => {
   );
 };
 
-export default BanUser;
+export default RentList;
