@@ -60,6 +60,8 @@ const RegisterWindow = (props) => {
                   autoComplete="email"
                   autoFocus
                   inputRef={register({
+                    MinLength: 3,
+                    required: true,
                     pattern: {
                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
                       message: 'Adres email nieprawidłowy!',
@@ -90,6 +92,8 @@ const RegisterWindow = (props) => {
                   fullWidth
                   defaultValue=""
                   inputRef={register({
+                    required: true,
+                    minLength: 8,
                     pattern: {
                       value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                       message: 'Hasło musi mieć min 8 znaków w tym znak specjalny',
