@@ -3,10 +3,9 @@ import {
 } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    container: {
-        backgroundColor: "red",
-        marginLeft: "auto",
-        marginRight: "auto",
+    naglowek: {
+        backgroundColor: "#0d0d0d",
+        color: "white",
     }
 }));
 

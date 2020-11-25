@@ -184,7 +184,7 @@ const SideBar = () => {
               <ListItem className={classes.MenuItem}>
                 <ExitToAppIcon></ExitToAppIcon>
                 <Link to="/cardelete">
-                  <Button>Usuń samochód</Button>
+                  <Button>Usuń Samochód</Button>
                 </Link>
               </ListItem>
               <ListItem className={classes.MenuItem}>
@@ -195,14 +195,8 @@ const SideBar = () => {
               </ListItem>
               <ListItem className={classes.MenuItem}>
                 <ExitToAppIcon></ExitToAppIcon>
-                <Link to="/banuser">
-                  <Button>Zbanuj użytkownika</Button>
-                </Link>
-              </ListItem>
-              <ListItem className={classes.MenuItem}>
-                <ExitToAppIcon></ExitToAppIcon>
-                <Link to="/blacklist">
-                  <Button>Czarna lista</Button>
+                <Link to="/listusers">
+                  <Button>Lista Użytkowników</Button>
                 </Link>
               </ListItem>
             </>
