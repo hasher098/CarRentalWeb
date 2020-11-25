@@ -51,25 +51,7 @@ const TopBar = () => {
         <Typography variant="h6" noWrap className={classes.title}>
           <img src={matches ? log : log1}></img>
         </Typography>
-        {matches?
-        isName && <Typography>Zalogowany jako: {isName}</Typography>:<></>}
-        <Typography className={classes.mailTypho} variant="h6" noWrap>
-          <Button onClick={handleClickOpenDialog} className={classes.but}>
-            <EmailIcon className={classes.mailIcon}></EmailIcon>
-            {matches ? <Typography variant="h6">Kontakt</Typography> : <></>}
-          </Button>
-          <Dialog
-            open={open}
-            onClose={handleCloseDialog}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogContent>
-              <ContactWindow></ContactWindow>
-            </DialogContent>
-            <DialogActions></DialogActions>
-          </Dialog>
-        </Typography>
+        {matches ? isName && <Typography>Zalogowany jako: {isName}</Typography> : <></>}
         <Typography variant="h6" className={classes.menu}>
           <SideBar></SideBar>
         </Typography>

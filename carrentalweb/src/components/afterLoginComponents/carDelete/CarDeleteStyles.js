@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     form: {
         marginLeft: "auto",
         marginRight: "auto",
+        minWidth:'300px'
     },
     photo: {
         maxWidth: '100%',
@@ -29,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '24px',
         textAlign: 'center',
     },
+    autocomp:{
+        minWidth:'300px'
+    }
 }));
 
 export default useStyles;

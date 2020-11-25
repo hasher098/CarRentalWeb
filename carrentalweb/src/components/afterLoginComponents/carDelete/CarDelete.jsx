@@ -63,13 +63,15 @@ const CarDelete = () => {
             <Grid item className={classes.photobox} xs={12} md={12}>
               <img src={image} className={classes.photo}></img>
             </Grid>
-            <Grid item xs={12} md={12}>
+            <Grid item xs={12} md={12} className={classes.autocomp}>
               <Autocomplete
                 id="combo-box-demo"
                 options={data}
                 onChange={(event, newValue) => {
-                  setIdcar(newValue.id);
-                  setImage(newValue.image);
+                  if (newValue) {
+                    setIdcar(newValue.id);
+                    setImage(newValue.image);
+                  }
                 }}
                 getOptionLabel={(option) =>
                   option.brand + ' ' + option.model + ' Pojemność: ' + option.engineCapacity

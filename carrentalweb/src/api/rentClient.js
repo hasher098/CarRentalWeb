@@ -1,4 +1,17 @@
-import {apiClient} from "./apiClient";
+
+import {
+    apiClient
+} from "./apiClient";
+
+
+export const listOfRents = async () => {
+    return await apiClient.get(`/api/Rents`);
+};
+
+export const nameInRents = async () =>{
+    return await apiClient.get(`/api/Authentication/GetUserList`);
+}
+
 
 export const rentCarRequest = async(userId,carCopyId,RentDate,ReturnDate)=>{
     console.log(userId,carCopyId,RentDate,ReturnDate);
@@ -7,3 +20,4 @@ export const rentCarRequest = async(userId,carCopyId,RentDate,ReturnDate)=>{
     });
     return resp;
 };
+

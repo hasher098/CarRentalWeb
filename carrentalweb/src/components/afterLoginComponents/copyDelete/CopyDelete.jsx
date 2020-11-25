@@ -19,7 +19,7 @@ const CarDelete = () => {
   const classes = useStyles();
   const [status, setStatus] = useState(null);
   const [link, setLink] = useState('copydelete');
-  const [copyId, setCopyId] = useState(null);
+  const [copyId, setCopyId] = useState(undefined);
   const [open, setOpen] = useState(false);
   ////////////////////////////////////////
   const [anchorEl, setAnchorEl] = useState(null);
@@ -67,7 +67,10 @@ const CarDelete = () => {
               id="combo-box-demo"
               options={data}
               onChange={(event, newValue) => {
-                setCopyId(newValue.id);
+                if (newValue) {
+                  console.log(newValue.id);
+                  setCopyId(newValue.id);
+                }
               }}
               getOptionLabel={(option) => option.registrationNumber}
               style={{ backgroundColor: `white` }}

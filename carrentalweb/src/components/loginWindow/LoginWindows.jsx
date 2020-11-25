@@ -48,7 +48,7 @@ const LoginWindow = (props) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant="h5" className={classes.text}>
-            SignIn
+            Zaloguj się
           </Typography>
           <form role="form" noValidate>
             <Grid container spacing={2}>
@@ -63,8 +63,9 @@ const LoginWindow = (props) => {
                   name="userName"
                   autoComplete="userName"
                   autoFocus
-                  inputRef={register}
+                  inputRef={register({ required: true })}
                 />
+                {errors.userName && 'Nazwa użytkownika jest wymagana'}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -72,12 +73,13 @@ const LoginWindow = (props) => {
                   margin="normal"
                   fullWidth
                   defaultValue=""
-                  inputRef={register}
+                  inputRef={register({ required: true })}
                   name="password"
                   label={'Password'}
                   type="password"
                   id="password"
                 />
+                {errors.password && 'Hasło jest wymagane'}
               </Grid>
             </Grid>
             <Loader
@@ -88,15 +90,8 @@ const LoginWindow = (props) => {
               className={classes.submit}
               isLoading={isLoading}
             >
-              Sign In
+              Zaloguj
             </Loader>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Don't have an account? Sign Up
-                </Link>
-              </Grid>
-            </Grid>
           </form>
         </Container>
       </Grid>
