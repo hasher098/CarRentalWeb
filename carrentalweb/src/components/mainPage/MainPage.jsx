@@ -28,7 +28,6 @@ import LoginWindow from '../loginWindow/LoginWindows.jsx';
 import AfterRent from '../afterLoginComponents/rentCar/afterRent/AfterRent';
 import RentCarWithoutButton from '../afterLoginComponents/rentCar/RentCarWithoutButton';
 
-
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
 
@@ -59,10 +58,6 @@ const MainPage = () => {
 
             <PrivateRoute exact path="/listusers" component={ListUsers} />
             <PrivateRoute exact path="/rentlist" component={RentList} />
-
-            <PrivateRoute exact path="/banuser" component={BanUser} />
-            <PrivateRoute exact path="/blacklist" component={BlackList} />
-
           </Switch>
         </>
       )}
