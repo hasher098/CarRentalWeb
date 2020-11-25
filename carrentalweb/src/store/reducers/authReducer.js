@@ -1,7 +1,7 @@
 const initialState = { isAuthUser: false, userId: 0, userName: "", userRole:"" };
 
 export default function authReducer(
-  state,
+  state=initialState,
   action
 ) {
   switch (action.type) {
@@ -18,6 +18,6 @@ export default function authReducer(
       };
 
     default:
-      return initialState;
+      return state;
   }
 }

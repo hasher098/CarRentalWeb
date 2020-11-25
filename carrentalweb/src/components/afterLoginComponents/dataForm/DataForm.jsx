@@ -21,7 +21,7 @@ const DataForm = () => {
 
   const [userData, setUserData] = useState('Brak');
   ////////////////////////////////////////
-  const [link, setLink] = useState('profile');
+  const [link, setLink] = useState('');
   const [status, setStatus] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = (event) => {
@@ -33,7 +33,6 @@ const DataForm = () => {
     setOpen(false);
   };
   const [open, setOpen] = useState(false);
-  ////////////////////////////////////////
 
   async function userDet(userId) {
     const response = await userDetails(userId);
@@ -46,7 +45,6 @@ const DataForm = () => {
       pesel: response.data.pesel,
     });
   }
-  console.log(userData);
   useEffect(() => {
     userDet(userId);
   }, []);
@@ -66,7 +64,6 @@ const DataForm = () => {
         data.pesel,
       );
       setStatus('Dane zaktualizowane pomyślnie');
-      setLink('/');
     } catch (error) {
       setStatus('Błąd podczas aktualizacji danych');
     }
@@ -135,7 +132,7 @@ const DataForm = () => {
             <DialogContent>
               <Typography className={classes.status}>
                 {status}
-                <Link style={{ textDecoration: 'none' }} to={link}>
+                <Link style={{ textDecoration: 'none' }}>
                   <Button
                     type="submit"
                     fullWidth

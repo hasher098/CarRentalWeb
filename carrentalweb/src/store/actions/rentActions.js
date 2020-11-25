@@ -1,16 +1,15 @@
 
 import {rentCar} from "../../api/carClient";
 
-export const loginAction = (
-userId,carCopyId,RentDate,ReturnDate
+export const rentCarAction = (
+carCopyId
 ) => async (
   dispatch
 ) => {
   try {
 
-    const data = await rentCar(userId,carCopyId,RentDate,ReturnDate);
-    await dispatch({ type: "LOGIN_ACTION", userId:1});
-    return true;
+    await dispatch({ type: "CHOOSE_CAR", car:carCopyId});
+    return carCopyId;
   } catch (error) {
     return false;
   }

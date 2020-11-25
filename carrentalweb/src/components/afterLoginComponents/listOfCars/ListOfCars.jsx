@@ -32,7 +32,6 @@ const ListOfCars = () => {
     const response = await listOfAvCarsRequest();
     const rows = response.data;
     setCars(rows);
-    console.log(response);
     setAllCars(rows);
     setCurrentCars(rows.slice(currentPage * 6 - 6, currentPage * 6));
     const uniqueBrands = [...new Set(rows.map((item) => item.brand))];

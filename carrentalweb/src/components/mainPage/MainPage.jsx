@@ -22,7 +22,12 @@ import ListUsers from '../afterLoginComponents/listUsers/ListUsers';
 import RentList from '../afterLoginComponents/rentList/RentList';
 
 import RentCar from '../afterLoginComponents/rentCar/RentCar.jsx';
+
 import LoginWindow from '../loginWindow/LoginWindows.jsx';
+
+import AfterRent from '../afterLoginComponents/rentCar/afterRent/AfterRent';
+import RentCarWithoutButton from '../afterLoginComponents/rentCar/RentCarWithoutButton';
+
 
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
@@ -45,14 +50,19 @@ const MainPage = () => {
             <PrivateRoute path="/additionalInfo" component={DescPart} />
             <PrivateRoute path="/profile" component={ProfilePage} />
             <PrivateRoute exact path="/cardetails/:carid" component={CarDetails} />
-            <PrivateRoute exact path="/RentCar" component={RentCar} />
+            <PrivateRoute exact path="/RentCar" component={RentCarWithoutButton} />
             <PrivateRoute exact path="/RentCar/:carid" component={RentCar} />
             <PrivateRoute exact path="/newcar" component={NewCar} />
             <PrivateRoute exact path="/addcopy" component={AddCopy} />
             <PrivateRoute exact path="/cardelete" component={CarDelete} />
             <PrivateRoute exact path="/copydelete" component={CopyDelete} />
+
             <PrivateRoute exact path="/listusers" component={ListUsers} />
             <PrivateRoute exact path="/rentlist" component={RentList} />
+
+            <PrivateRoute exact path="/banuser" component={BanUser} />
+            <PrivateRoute exact path="/blacklist" component={BlackList} />
+
           </Switch>
         </>
       )}
