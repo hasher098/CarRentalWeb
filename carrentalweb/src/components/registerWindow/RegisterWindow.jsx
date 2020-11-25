@@ -59,8 +59,14 @@ const RegisterWindow = (props) => {
                   name="email"
                   autoComplete="email"
                   autoFocus
-                  inputRef={register}
+                  inputRef={register({
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i,
+                      message: 'Adres email nieprawidłowy!',
+                    },
+                  })}
                 />
+                {errors.email && errors.email.message}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -73,8 +79,9 @@ const RegisterWindow = (props) => {
                   name="userName"
                   autoComplete="userName"
                   autoFocus
-                  inputRef={register}
+                  inputRef={register({ required: true })}
                 />
+                {errors.userName && 'Nazwa użytkownika jest wymagana'}
               </Grid>
               <Grid item xs={12}>
                 <TextField
@@ -82,12 +89,18 @@ const RegisterWindow = (props) => {
                   margin="normal"
                   fullWidth
                   defaultValue=""
-                  inputRef={register}
+                  inputRef={register({
+                    pattern: {
+                      value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+                      message: 'Hasło musi mieć min 8 znaków w tym znak specjalny',
+                    },
+                  })}
                   name="password"
                   label={'Password'}
                   type="password"
                   id="password"
                 />
+                {errors.password && errors.password.message}
               </Grid>
             </Grid>
             <Loader
