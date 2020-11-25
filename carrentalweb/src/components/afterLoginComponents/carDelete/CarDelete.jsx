@@ -66,6 +66,7 @@ const CarDelete = () => {
             <Grid item xs={12} md={12}>
               <Autocomplete
                 id="combo-box-demo"
+                fullWidth
                 options={data}
                 onChange={(event, newValue) => {
                   setIdcar(newValue.id);

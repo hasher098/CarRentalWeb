@@ -40,11 +40,11 @@ const RegisterWindow = (props) => {
     <FormControl onSubmit={handleSubmit(registerUser)}>
       <Grid>
         <Container component="main" maxWidth="xs">
-        <Avatar className={classes.avatar}>
+          <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant="h5" className={classes.text}>
-          Sign up
+            Zarajestruj się
           </Typography>
           <form role="form" noValidate>
             <Grid container spacing={2}>
@@ -98,15 +98,8 @@ const RegisterWindow = (props) => {
               className={classes.submit}
               isLoading={isLoading}
             >
-              Sign Up
+              Zarejestruj
             </Loader>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
-            </Grid>
           </form>
         </Container>
       </Grid>

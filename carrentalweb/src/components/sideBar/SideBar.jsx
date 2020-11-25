@@ -199,6 +199,12 @@ const SideBar = () => {
                   <Button>Lista Użytkowników</Button>
                 </Link>
               </ListItem>
+              <ListItem className={classes.MenuItem}>
+                <ExitToAppIcon></ExitToAppIcon>
+                <Link to="/rentlist">
+                  <Button>Lista Wypożyczeń</Button>
+                </Link>
+              </ListItem>
             </>
           )}
         </List>

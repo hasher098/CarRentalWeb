@@ -48,7 +48,7 @@ const LoginWindow = (props) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography variant="h5" className={classes.text}>
-            SignIn
+            Zaloguj się
           </Typography>
           <form role="form" noValidate>
             <Grid container spacing={2}>
@@ -88,15 +88,8 @@ const LoginWindow = (props) => {
               className={classes.submit}
               isLoading={isLoading}
             >
-              Sign In
+              Zaloguj
             </Loader>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link href="#" variant="body2">
-                  Don't have an account? Sign Up
-                </Link>
-              </Grid>
-            </Grid>
           </form>
         </Container>
       </Grid>

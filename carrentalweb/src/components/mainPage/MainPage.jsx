@@ -19,8 +19,10 @@ import AddCopy from '../afterLoginComponents/addCopy/AddCopy';
 import CarDelete from '../afterLoginComponents/carDelete/CarDelete';
 import CopyDelete from '../afterLoginComponents/copyDelete/CopyDelete';
 import ListUsers from '../afterLoginComponents/listUsers/ListUsers';
+import RentList from '../afterLoginComponents/rentList/RentList';
 
 import RentCar from '../afterLoginComponents/rentCar/RentCar.jsx';
+import LoginWindow from '../loginWindow/LoginWindows.jsx';
 
 const MainPage = () => {
   const isAuth = useSelector(authUserSelector);
@@ -50,6 +52,7 @@ const MainPage = () => {
             <PrivateRoute exact path="/cardelete" component={CarDelete} />
             <PrivateRoute exact path="/copydelete" component={CopyDelete} />
             <PrivateRoute exact path="/listusers" component={ListUsers} />
+            <PrivateRoute exact path="/rentlist" component={RentList} />
           </Switch>
         </>
       )}
