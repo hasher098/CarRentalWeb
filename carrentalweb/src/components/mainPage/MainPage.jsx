@@ -23,7 +23,7 @@ import BanUser from '../afterLoginComponents/banUser/BanUser';
 import BlackList from '../afterLoginComponents/blackList/BlackList';
 
 import RentCar from '../afterLoginComponents/rentCar/RentCar.jsx';
-
+import AfterRent from '../afterLoginComponents/rentCar/afterRent/AfterRent';
 import RentCarWithoutButton from '../afterLoginComponents/rentCar/RentCarWithoutButton';
 
 const MainPage = () => {
@@ -55,6 +55,7 @@ const MainPage = () => {
             <PrivateRoute exact path="/copydelete" component={CopyDelete} />
             <PrivateRoute exact path="/banuser" component={BanUser} />
             <PrivateRoute exact path="/blacklist" component={BlackList} />
+            <PrivateRoute exact path="/afterRent" component={AfterRent} />
           </Switch>
         </>
       )}

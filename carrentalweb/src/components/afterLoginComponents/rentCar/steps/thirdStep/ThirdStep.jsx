@@ -22,23 +22,41 @@ import EventSeatIcon from '@material-ui/icons/EventSeat';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import ListOfCars from '../../../listOfCars/ListOfCars';
+import { userDetails } from '../../../../../api/userClient';
+import { rentCarRequest } from '../../../../../api/rentClient';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 const ThirdStep = (props) => {
   const [data, setData] = useState();
   const classes = useStyles();
+  const userId = useSelector(userIdSelector);
+  const [userDetailsState, setUserDetailsState] = useState();
+  useEffect(() => {}, [props]);
+
+  async function userDet(userId) {
+    const response = await userDetails(userId);
+    setUserDetailsState(response.data);
+  }
   useEffect(() => {
+    userDet(userId);
     setData(props.allDetails);
-  }, [props]);
+    console.log(props);
+  }, []);
+
+  async function sendRentRequest() {
+    try {
+      const resp = await rentCarRequest(userId, props.allDetails[0].id, props.date1, props.date2);
+    } catch (Error) {
+      console.log(Error);
+    }
+  }
+
   return (
     <Grid container spacing={0} direction="column" alignItems="center" justify="center">
-      {data && (
+      {data && userDetailsState && (
         <Grid container spacing={0} direction="column" alignItems="center" justify="center">
           <Card className={classes.root}>
             <CardActionArea>
-              <CardMedia
-                className={classes.media}
-                image={data[1].image}
-                title="Contemplative Reptile"
-              />
+              <CardMedia className={classes.media} image={data[1].image} />
               <CardContent>
                 <Typography gutterBottom variant="h4" component="h2">
                   {data[1].brand} {data[1].model}
@@ -80,20 +98,49 @@ const ThirdStep = (props) => {
             <CardActionArea>
               <CardContent>
                 <Typography gutterBottom variant="h4" component="h2">
-                  TOMASZ KROTOSZ
+                  {userDetailsState.firstName} {userDetailsState.lastName}
                 </Typography>
                 <Grid item className={classes.cardata}>
-                  <Typography className={classes.carinfo}>PESEL:</Typography>
+                  <Typography className={classes.carinfo}>
+                    PESEL: {userDetailsState.pesel}
+                  </Typography>
                 </Grid>
                 <Grid item className={classes.cardata}>
-                  <Typography className={classes.carinfo}>NR DOWODU:</Typography>
+                  <Typography className={classes.carinfo}>
+                    NR DOWODU: {userDetailsState.iDcardNumber}
+                  </Typography>
                 </Grid>
+                <Grid item className={classes.cardata}>
+                  <Typography className={classes.carinfo}>
+                    ADRES: {userDetailsState.address}
+                  </Typography>
+                </Grid>
+                {props.date1 && props.date2 && (
+                  <div>
+                    <Grid item className={classes.cardata}>
+                      <Typography className={classes.carinfo}>OD: {props.date1}</Typography>
+                    </Grid>
+                    <Grid item className={classes.cardata}>
+                      <Typography className={classes.carinfo}>DO: {props.date2}</Typography>
+                    </Grid>
+                  </div>
+                )}
               </CardContent>
             </CardActionArea>
           </Card>
+          <Link style={{ textDecoration: 'none' }} to={'/afterRent'}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classes.button}
+              onClick={sendRentRequest}
+            >
+              Wyslij Wniosek
+            </Button>
+          </Link>
         </Grid>
       )}
-      {!data && <div>elo</div>}
+      {!data && <div>problem</div>}
     </Grid>
   );
 };

@@ -26,10 +26,10 @@ const FirstStep = (props) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const userId = useSelector(userIdSelector);
-  const [selectedCar, setSelectedCar] = useState(null);
-  const [selectedCarDetails, setSelectedCarDetail] = useState(null);
-  const [selectedCarDetailsCard, setSelectedCarDetailCard] = useState(null);
-  const [selectedCarPricing, setSelectedCarPricing] = useState(null);
+  const [selectedCar, setSelectedCar] = useState();
+  const [selectedCarDetails, setSelectedCarDetail] = useState();
+  const [selectedCarDetailsCard, setSelectedCarDetailCard] = useState();
+  const [selectedCarPricing, setSelectedCarPricing] = useState(100);
   const [allDetails, setAllDetails] = useState([]);
 
   async function selectCar() {
@@ -48,11 +48,18 @@ const FirstStep = (props) => {
       setSelectedCarDetail(car);
       const resp2 = await listCar(car.carId);
       setSelectedCarDetailCard(resp2.data);
-      const resp3 = await getPricingCar(car.carId);
-      setSelectedCarPricing(resp3.data[0].pricePerDay);
-      setAllDetails((allDetails) => [...allDetails, car]);
-      setAllDetails((allDetails) => [...allDetails, resp2.data]);
-      setAllDetails((allDetails) => [...allDetails, resp3.data[0].pricePerDay]);
+      const resp3 = await getPricingCar(car.id);
+      if (resp3.data != undefined) {
+        resp3.data = 100;
+      }
+      setSelectedCarPricing(resp3.data);
+      if (car) {
+        setAllDetails((allDetails) => [...allDetails, car]);
+      }
+      if (resp2.data) {
+        setAllDetails((allDetails) => [...allDetails, resp2.data]);
+      }
+      setAllDetails((allDetails) => [...allDetails, resp3.data]);
     } catch (error) {
       console.log(error);
     }
