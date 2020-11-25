@@ -15,6 +15,10 @@ export const listOfCopyRequest = async () => {
     return await apiClient.get(`/api/CarCopies`);
 };
 
+export const copyDetails = async (id) => {
+    return await apiClient.get(`/api/CarCopies/${id}`);
+};
+
 export const listCar = async (id) => {
     return await apiClient.get(`/api/Cars/${id}`);
 
@@ -59,8 +63,11 @@ export const copyDelete = async (copiesID) => {
     return resp;
 }
 
-export const rentCar = async (userId,carCopyId,RentDate,ReturnDate)=>{
-    const resp = await apiClient.post(`api/Rents/RentCar`,{
-        userId,carCopyId,RentDate,ReturnDate
+export const rentCar = async (userId, carCopyId, RentDate, ReturnDate) => {
+    const resp = await apiClient.post(`api/Rents/RentCar`, {
+        userId,
+        carCopyId,
+        RentDate,
+        ReturnDate
     });
 }

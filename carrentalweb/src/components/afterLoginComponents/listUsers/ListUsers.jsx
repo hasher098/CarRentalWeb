@@ -48,12 +48,24 @@ const BanUser = () => {
         <TableBody>
           {users.map((row) => (
             <TableRow key={row.name}>
-              <TableCell align="right">{row.firstName}</TableCell>
-              <TableCell align="right">{row.lastName}</TableCell>
-              <TableCell align="right">{row.address}</TableCell>
-              <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right">{row.pesel}</TableCell>
-              <TableCell align="right">{row.iDcardNumber}</TableCell>
+              <TableCell align="right" className={classes.dane}>
+                {row.firstName}
+              </TableCell>
+              <TableCell align="right" className={classes.dane}>
+                {row.lastName}
+              </TableCell>
+              <TableCell align="right" className={classes.dane}>
+                {row.address}
+              </TableCell>
+              <TableCell align="right" className={classes.dane}>
+                {row.email}
+              </TableCell>
+              <TableCell align="right" className={classes.dane}>
+                {row.pesel}
+              </TableCell>
+              <TableCell align="right" className={classes.dane}>
+                {row.iDcardNumber}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
