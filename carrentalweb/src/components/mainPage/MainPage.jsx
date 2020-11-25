@@ -55,7 +55,7 @@ const MainPage = () => {
             <PrivateRoute exact path="/addcopy" component={AddCopy} />
             <PrivateRoute exact path="/cardelete" component={CarDelete} />
             <PrivateRoute exact path="/copydelete" component={CopyDelete} />
-
+            <PrivateRoute exact path="/afterRent" component={AfterRent} />
             <PrivateRoute exact path="/listusers" component={ListUsers} />
             <PrivateRoute exact path="/rentlist" component={RentList} />
           </Switch>
