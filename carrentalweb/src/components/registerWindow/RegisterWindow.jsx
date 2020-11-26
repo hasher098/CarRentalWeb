@@ -92,8 +92,6 @@ const RegisterWindow = (props) => {
                   fullWidth
                   defaultValue=""
                   inputRef={register({
-                    required: true,
-                    minLength: 8,
                     pattern: {
                       value: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                       message: 'Hasło musi mieć min 8 znaków w tym znak specjalny',
